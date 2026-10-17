@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { notes } from '../../data/site';
+---
+<BaseLayout title="Notes">
+  <section class="archive-head section-pad"><p class="eyebrow"><span class="eyebrow-mark"></span>Notes / process / tools</p><h1>Thinking through<br /><em>the making.</em></h1><p class="archive-lede">Short notes on materials, product decisions, prototypes and the tools that help ideas become objects.</p></section>
+  <section class="notes-archive section-pad section-rule">{notes.map((note) => <a class="notes-archive-row" href={`/notes/${note.slug}/`}><span class="mono">{note.date}</span><div><p class="note-tag">{note.tag}</p><h2>{note.title}</h2><p>{note.excerpt}</p></div><span>↗</span></a>)}</section>
+</BaseLayout>

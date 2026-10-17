@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects, site } from '../data/site';
+---
+<BaseLayout title={site.name}>
+  <div class="intro-screen" data-intro aria-hidden="true">
+    <div class="intro-top"><span>YANG / PRODUCT DESIGN</span><div class="intro-top-actions"><div class="language-switch language-switch--inverse" data-language-switch aria-label="Language"><button type="button" data-language="cn">CN</button><span>/</span><button type="button" data-language="en">EN</button></div><span class="mono">INITIALIZING 001</span></div></div>
+    <div class="intro-product"><div class="intro-product__light"></div><div class="intro-product__body"><i></i><i></i></div><div class="intro-product__base"></div></div>
+    <div class="intro-bottom"><span data-i18n="intro-label" data-cn="正在构建的产品" data-en="Objects in progress">Objects in progress</span><button class="intro-enter" type="button" data-enter><span data-i18n="intro-enter" data-cn="进入作品集" data-en="Enter portfolio">Enter portfolio</span> <span>↗</span></button><span class="mono">2026</span></div>
+  </div>
+
+  <div class="reference-home homepage-showcase">
+    <aside class="reference-sidebar">
+      <div class="reference-mobile-bar"><a class="reference-brand" href="/">{site.name}</a><button class="reference-menu" type="button" aria-expanded="false" aria-controls="reference-nav">Menu</button></div>
+      <div class="reference-sidebar-inner">
+        <a class="reference-brand" href="/">{site.name}</a>
+        <p class="reference-tagline"><span data-i18n="tagline" data-cn="产品策略，<br />人因研究与硬件开发" data-en="Product strategy,<br />human factors & hardware">Product strategy,<br />human factors &amp; hardware</span></p>
+        <nav class="reference-nav" id="reference-nav" aria-label="Portfolio navigation">
+          <a class="is-current" href="#project-01">Design projects</a>
+          <a href="/notes/">Notes</a>
+          <a href="/about/">About</a>
+          <a href={`mailto:${site.email}`}>Contact</a>
+        </nav>
+        <div class="reference-sidebar-foot"><span class="mono">{site.location}</span><span class="mono">© 2026</span></div>
+      </div>
+    </aside>
+
+    <section class="reference-content product-feed" aria-label="Selected product projects">
+      {projects.map((project, index) => (
+        <a class="product-poster" id={`project-${String(index + 1).padStart(2, '0')}`} href={`/work/${project.slug}/`} style={`--card-color: ${project.color}`} aria-label={`${project.title}, ${project.category}, ${project.year}`}>
+          <span class="product-poster-index mono">{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
+          <span class="product-poster-media" aria-hidden="true">
+            <span class="product-poster-grid"></span>
+            <span class="product-poster-object card-object"><span></span><span></span></span>
+            <span class="product-poster-shadow"></span>
+          </span>
+        </a>
+      ))}
+    </section>
+  </div>
+</BaseLayout>

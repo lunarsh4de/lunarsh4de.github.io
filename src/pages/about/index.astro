@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+---
+
+<BaseLayout title={`About — ${site.name}`} description={site.statement}>
+  <article class="about-page">
+    <h1 class="sr-only" data-i18n="about-title" data-cn="关于我" data-en="About me">About me</h1>
+
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="about-lede" data-i18n="about-body" data-cn={site.profile.body.cn} data-en={site.profile.body.en}>{site.profile.body.en}</p>
+        <p data-i18n="about-focus" data-cn={site.profile.focus.cn} data-en={site.profile.focus.en}>{site.profile.focus.en}</p>
+        <p data-i18n="about-principle" data-cn={site.profile.principle.cn} data-en={site.profile.principle.en}>{site.profile.principle.en}</p>
+        <a class="arrow-link" href={`mailto:${site.email}`}>Start a conversation <span>↗</span></a>
+      </div>
+      <figure class="about-portrait">
+        <img src="/images/yang-zichen.png" alt="Portrait of Zichen Yang" width="1448" height="1086" loading="eager" />
+        <img class="portrait-affiliation" src="/images/hku-logo.png" alt="The University of Hong Kong" width="3912" height="1362" loading="lazy" />
+      </figure>
+    </div>
+
+    <div class="about-details">
+      <section>
+        <p class="section-kicker">Education</p>
+        <div class="about-detail-row"><strong>The University of Hong Kong</strong><span>Innovation Design &amp; Technology / MDes<br />2026 — present</span></div>
+        <div class="about-detail-row"><strong>Zhejiang University Ningbo Institute of Technology</strong><span>Industrial Design / BEng<br />2020 — 2024</span></div>
+      </section>
+      <section>
+        <p class="section-kicker">Experience</p>
+        <div class="about-detail-row"><strong>Ningbo Zhidi Automation Technology</strong><span>Industrial Designer<br />2025 — 2026</span></div>
+        <div class="about-detail-row"><strong>Ningbo Yijian Design Institute</strong><span>Assistant Industrial Designer<br />2022</span></div>
+      </section>
+      <section>
+        <p class="section-kicker">Tools &amp; practice</p>
+        <p class="about-tools">Siemens NX / UG · Rhino · KeyShot · Figma<br />3D printing · Arduino · Mechanical assembly<br />Photoshop · Illustrator · ComfyUI · Codex</p>
+      </section>
+      <section>
+        <p class="section-kicker">Selected recognition</p>
+        <p class="about-tools">China–ASEAN Industrial Design Competition<br />Patent project: automated feeding machine<br />National Innovation &amp; Entrepreneurship Training Program</p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

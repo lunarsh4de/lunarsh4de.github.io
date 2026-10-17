@@ -1,0 +1,46 @@
+{
+  "researched_at": "2026-10-06",
+  "source_method": "agent-reach GitHub development workflow; anonymous read-only HTTPS shallow clones",
+  "reference_root": "C:\\Users\\81489\\.agent-reach\\portfolio-references\\repos",
+  "repositories": [
+    {
+      "name": "withastro/astro",
+      "url": "https://github.com/withastro/astro",
+      "path": "C:\\Users\\81489\\.agent-reach\\portfolio-references\\repos\\astro",
+      "commit": "c5275e3d5a688a7d246c9576b594870675b70e37",
+      "license": "MIT (root LICENSE; Astro project)",
+      "scope": "examples/portfolio",
+      "use": "Astro portfolio starter structure, static page composition, config and asset organization.",
+      "limitations": [
+        "The repository is a framework monorepo and the example is a starter, not a finished industrial-design portfolio.",
+        "Example images and other media should be treated as reference-only until their individual rights are verified; the repository MIT license does not automatically license third-party assets."
+      ]
+    },
+    {
+      "name": "Thinkmill/keystatic",
+      "url": "https://github.com/Thinkmill/keystatic",
+      "path": "C:\\Users\\81489\\.agent-reach\\portfolio-references\\repos\\keystatic",
+      "commit": "b8ec9650622c11e1d38e73fca3b64c17ec278d18",
+      "license": "MIT (root LICENSE; Thinkmill Labs Pty Ltd)",
+      "scope": "repository architecture and dev-projects/templates",
+      "use": "Reference for content modeling and a Git-backed CMS workflow if the portfolio later needs structured case-study editing.",
+      "limitations": [
+        "Keystatic is an experimental CMS/monorepo, not a visual portfolio template.",
+        "Use the public APIs and documented integration points; do not copy unrelated development fixtures or assume the whole monorepo is required."
+      ]
+    },
+    {
+      "name": "van-thurm/portfolio-kit",
+      "url": "https://github.com/van-thurm/portfolio-kit",
+      "path": "C:\\Users\\81489\\.agent-reach\\portfolio-references\\repos\\portfolio-kit",
+      "commit": "339bcaba6f36c63c3fbd14099237e70db8c9b5ed",
+      "license": "MIT (root LICENSE; copyright van-thurm, 2025)",
+      "scope": "Astro portfolio template, layouts, data files and case-study conventions",
+      "use": "Reference for restrained editorial portfolio IA, case-study layouts, centralized identity data and static deployment.",
+      "limitations": [
+        "The template includes project-specific fonts, screenshots, GIFs and other media; MIT code licensing does not grant rights to reuse those assets.",
+        "Bundled Cursor skills and content conventions are optional and should not be copied into this project without a separate need and review."
+      ]
+    }
+  ]
+}

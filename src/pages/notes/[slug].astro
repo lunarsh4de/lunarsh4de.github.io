@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { notes } from '../../data/site';
+
+export function getStaticPaths() {
+  return notes.map((note) => ({ params: { slug: note.slug }, props: { note } }));
+}
+
+const { note } = Astro.props;
+---
+<BaseLayout title={note.title} description={note.excerpt}>
+  <article class="note-detail section-pad"><a class="back-link" href="/notes/">← All notes</a><header><p class="eyebrow"><span class="eyebrow-mark"></span>{note.tag} / {note.date}</p><h1>{note.title}</h1><p class="note-detail-lede">{note.excerpt}</p></header><div class="note-detail-body"><p>This is a first-edition note slot. Long-form writing will live here as Markdown or MDX once the content workflow is connected.</p><p>The page is intentionally plain: the content should carry the argument, while images, diagrams and model viewers can be inserted as evidence where they help the reader understand a design decision.</p><blockquote>Good product stories explain what changed, why it changed, and what the designer learned from the object.</blockquote></div></article>
+</BaseLayout>

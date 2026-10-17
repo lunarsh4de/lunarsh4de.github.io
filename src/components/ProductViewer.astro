@@ -1,0 +1,36 @@
+---
+interface Props {
+  model?: string;
+  poster?: string;
+  label?: string;
+  color?: string;
+  compact?: boolean;
+}
+
+const { model, poster, label = 'Interactive product view', color = '#d5e7dc', compact = false } = Astro.props;
+---
+<div class:list={['product-viewer', compact && 'product-viewer--compact']} style={`--product-color: ${color}`}>
+  {model ? (
+    <model-viewer
+      src={model}
+      poster={poster}
+      camera-controls
+      disable-pan
+      shadow-intensity="0.8"
+      exposure="0.95"
+      environment-image="neutral"
+      aria-label={label}
+    ></model-viewer>
+  ) : (
+    <div class="model-placeholder" role="img" aria-label="3D product placeholder">
+      <div class="placeholder-shadow"></div>
+      <div class="placeholder-product">
+        <div class="placeholder-top"></div>
+        <div class="placeholder-face"><span></span><span></span></div>
+        <div class="placeholder-base"></div>
+      </div>
+      <span class="placeholder-note">MODEL SLOT / GLB</span>
+    </div>
+  )}
+  <div class="viewer-caption"><span>{label}</span><span class="mono">DRAG / ROTATE</span></div>
+</div>

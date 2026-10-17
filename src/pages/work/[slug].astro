@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductViewer from '../../components/ProductViewer.astro';
+import { projects } from '../../data/site';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+const { project } = Astro.props;
+---
+<BaseLayout title={project.title} description={project.intro}>
+  <article class="case-study">
+    <header class="case-head section-pad"><a class="back-link" href="/work/">← All work</a><div class="case-title"><div><p class="eyebrow"><span class="eyebrow-mark"></span>{project.category} / {project.year}</p><h1>{project.title}</h1></div><p>{project.intro}</p></div></header>
+    <section class="case-viewer section-pad"><ProductViewer model={project.model} label={`${project.title} / interactive model`} color={project.color} /><div class="case-viewer-note"><span class="mono">MODEL STUDY</span><strong>{project.hero}</strong><span class="mono">GLB SLOT / VIEWER V.01</span></div></section>
+    <section class="case-facts section-pad section-rule">{project.facts.map((fact) => <div><span class="mono">{fact.label}</span><strong>{fact.value}</strong></div>)}</section>
+    <section class="case-sections section-pad">{project.sections.map((section, index) => <div class="case-section"><div class="case-section-index mono">0{index + 1}</div><div><p class="eyebrow">{section.eyebrow}</p><h2>{section.title}</h2><p>{section.body}</p></div><div class="case-section-media" style={`--card-color: ${project.color}`}><div class="card-object"><span></span><span></span></div></div></div>)}</section>
+    <footer class="case-footer section-pad section-rule"><a class="arrow-link" href="/work/">Back to selected work <span>↗</span></a><a class="arrow-link" href="/notes/">Read design notes <span>↗</span></a></footer>
+  </article>
+</BaseLayout>

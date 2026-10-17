@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/site';
+---
+<BaseLayout title="Work">
+  <section class="archive-head section-pad"><p class="eyebrow"><span class="eyebrow-mark"></span>Selected work</p><h1>Objects with<br /><em>a reason to exist.</em></h1><p class="archive-lede">A selection of product concepts, systems and physical prototypes across home, healthcare and everyday tools.</p></section>
+  <section class="archive-grid section-pad section-rule">{projects.map((project, index) => <a class="archive-card" href={`/work/${project.slug}/`} style={`--card-color: ${project.color}`}><div class="archive-card-visual"><div class="card-object"><span></span><span></span></div><span class="mono">0{index + 1}</span></div><div class="archive-card-copy"><div><p class="mono">{project.category} / {project.year}</p><h2>{project.title}</h2></div><span>↗</span><p>{project.short}</p></div></a>)}</section>
+</BaseLayout>

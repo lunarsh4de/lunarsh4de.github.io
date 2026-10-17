@@ -1,0 +1,132 @@
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: site
+    label: Site settings
+    type: file
+    path: src/data/site.json
+    fields:
+      - name: name
+        label: Name
+        type: string
+      - name: role
+        label: Role
+        type: string
+      - name: location
+        label: Location
+        type: string
+      - name: email
+        label: Email
+        type: string
+      - name: statement
+        label: Short statement
+        type: text
+      - name: profileHeadlineEn
+        label: Profile headline English
+        type: text
+      - name: profileHeadlineCn
+        label: Profile headline Chinese
+        type: text
+      - name: profileBodyEn
+        label: Profile introduction English
+        type: rich-text
+      - name: profileBodyCn
+        label: Profile introduction Chinese
+        type: rich-text
+      - name: profileFocusEn
+        label: Profile focus English
+        type: rich-text
+      - name: profileFocusCn
+        label: Profile focus Chinese
+        type: rich-text
+      - name: profilePrincipleEn
+        label: Profile principle English
+        type: rich-text
+      - name: profilePrincipleCn
+        label: Profile principle Chinese
+        type: rich-text
+
+  - name: projects
+    label: Projects
+    type: collection
+    path: src/data/projects
+    view:
+      fields: [title, category, year]
+    fields:
+      - name: slug
+        label: Slug
+        type: string
+      - name: title
+        label: Project title
+        type: string
+      - name: category
+        label: Category
+        type: string
+      - name: year
+        label: Year
+        type: string
+      - name: short
+        label: Short description
+        type: text
+      - name: intro
+        label: Introduction
+        type: text
+      - name: color
+        label: Accent color
+        type: string
+      - name: hero
+        label: Hero description
+        type: text
+      - name: model
+        label: GLB model path
+        type: string
+      - name: facts
+        label: Facts
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: value
+            label: Value
+            type: string
+      - name: sections
+        label: Case study sections
+        type: object
+        list: true
+        fields:
+          - name: eyebrow
+            label: Eyebrow
+            type: string
+          - name: title
+            label: Title
+            type: string
+          - name: body
+            label: Body
+            type: rich-text
+
+  - name: notes
+    label: Notes
+    type: collection
+    path: src/data/notes
+    view:
+      fields: [title, date, tag]
+    fields:
+      - name: slug
+        label: Slug
+        type: string
+      - name: date
+        label: Date
+        type: string
+      - name: title
+        label: Title
+        type: string
+      - name: tag
+        label: Tag
+        type: string
+      - name: excerpt
+        label: Excerpt
+        type: text
