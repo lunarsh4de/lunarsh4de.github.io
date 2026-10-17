@@ -12,3 +12,15 @@ For larger layout or interaction changes, describe the desired behavior in Codex
     npm run dev
 
 Edit src/data/site.json for profile copy, src/data/projects/ for project records, src/data/notes/ for notes, public/images/ for images, and src/pages/ or src/styles/ for page structure and visual behavior. The page components read these structured records through src/data/site.ts, so projects can be added or removed without rewriting the routes.
+
+The local Portfolio Composer edits src/data/layout.json. It controls homepage project order, visibility, and the one or two column span of each product panel.
+
+## Visual homepage editing
+
+From the project folder, run:
+
+    npm run composer
+
+Then open http://127.0.0.1:4325/. The Composer starts the Astro preview at http://127.0.0.1:4324/ as well. Drag a project card to reorder it, choose whether it is visible, and set its width or height. The center panel is a layout-only preview; the right panel shows the live Astro page. Use **Save layout** to write the changes to `src/data/layout.json`, then commit and push the file when the arrangement is ready for GitHub Pages.
+
+The Composer is intentionally local and binds to `127.0.0.1`; it is not part of the static GitHub Pages build. Use Pages CMS for project text and media, and use Composer for the homepage arrangement. The first version edits the three existing homepage projects; adding a new project still requires registering its JSON record in `src/data/site.ts` before it can appear in the Composer.

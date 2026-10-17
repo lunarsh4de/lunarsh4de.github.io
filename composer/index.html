@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Composer</title>
+  <style>
+    :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#171817;background:#f5f5f2;--line:#d9d9d3;--muted:#777771;--accent:#cfdf6b}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh}button,select{font:inherit}button{cursor:pointer}
+    header{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:3}
+    .brand{font-weight:700;letter-spacing:-.03em}.brand small{display:block;font-size:10px;color:var(--muted);font-weight:400;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+    .actions{display:flex;align-items:center;gap:10px}.button{border:1px solid #bdbdb6;background:#fff;border-radius:999px;padding:9px 15px;font-size:12px}.button.primary{background:#171817;color:#fff;border-color:#171817}.button:hover{transform:translateY(-1px)}
+    .app{display:grid;grid-template-columns:330px minmax(0,1fr);min-height:calc(100vh - 72px)}.panel{background:#fff;border-right:1px solid var(--line);padding:22px 20px;overflow:auto}.panel h2{font-size:14px;margin:0}.hint{font-size:11px;line-height:1.6;color:var(--muted);margin:8px 0 20px}.status{font-size:11px;min-height:18px;color:var(--muted);margin:14px 0}.status.ok{color:#456d38}.status.error{color:#a53e36}
+    .card-list{display:grid;gap:10px}.editor-card{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;cursor:grab}.editor-card.dragging{opacity:.45;border-color:#171817}.card-top{display:flex;align-items:center;gap:9px}.drag{font-size:15px;color:#aaa}.card-title{font-size:13px;font-weight:650;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card-meta{font-size:10px;color:var(--muted);margin:7px 0 12px 24px}.field{display:grid;grid-template-columns:52px 1fr;align-items:center;gap:8px;margin-top:8px;font-size:11px;color:var(--muted)}select{width:100%;border:1px solid var(--line);border-radius:6px;background:#fff;padding:6px 7px;font-size:11px;color:#171817}
+    .canvas{padding:24px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:24px;min-width:0}.canvas h2{font-size:14px;margin:0 0 12px}.preview-shell,.browser-shell{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;min-height:calc(100vh - 130px)}.preview-shell{padding:18px}.stage{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:140px;gap:10px}.stage-card{position:relative;border-radius:8px;overflow:hidden;min-width:0;background:var(--color);grid-column:span var(--columns);grid-row:span var(--rows);transition:transform .2s}.stage-card:hover{transform:scale(.99)}.stage-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#ffffff55,transparent 50%)}.stage-card::after{content:"";position:absolute;right:10%;top:23%;width:34%;height:52%;border:1px solid #17181755;border-radius:24px 12px 18px 20px;background:#ffffff44;transform:rotate(-8deg)}.stage-label{position:absolute;left:12px;bottom:10px;font-size:11px;z-index:1}.stage-number{position:absolute;right:12px;top:10px;font:10px ui-monospace,monospace;color:#17181788}
+    .browser-shell{display:flex;flex-direction:column}.browser-bar{height:38px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 12px}.dot{width:7px;height:7px;border-radius:50%;background:#d1d1ca}.browser-url{margin-left:8px;font:10px ui-monospace,monospace;color:var(--muted)}iframe{width:100%;height:100%;min-height:calc(100vh - 170px);border:0}
+    @media(max-width:1000px){.app{grid-template-columns:290px 1fr}.canvas{grid-template-columns:1fr}.browser-shell{display:none}}
+    @media(max-width:700px){header{padding:0 16px}.actions .secondary{display:none}.app{display:block}.panel{border-right:0;border-bottom:1px solid var(--line);max-height:none;padding:16px}.canvas{padding:16px}.preview-shell{min-height:500px}.stage{grid-auto-rows:110px}}
+  </style>
+</head>
+<body>
+  <header><div class="brand">Portfolio Composer<small>Local visual editor</small></div><div class="actions"><button class="button secondary" id="reload">Reload</button><button class="button secondary" id="open-site">Open website</button><button class="button primary" id="save">Save layout</button></div></header>
+  <main class="app">
+    <aside class="panel"><h2>Homepage projects</h2><p class="hint">拖动卡片改变顺序。设置显示状态，以及产品在三列网格中占用的宽度和高度。保存会写入项目里的 src/data/layout.json。</p><div id="status" class="status"></div><div id="cards" class="card-list"></div></aside>
+    <section class="canvas"><div><h2>Layout preview</h2><div class="preview-shell"><div id="stage" class="stage"></div></div></div><div class="browser-shell"><div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-url">127.0.0.1:4324</span></div><iframe id="site-preview" title="Live Astro preview" src="http://127.0.0.1:4324/?skipIntro=1"></iframe></div></section>
+  </main>
+  <script>
+    const state = { layout: null, projects: [] };
+    const $ = (selector) => document.querySelector(selector);
+    const status = (message, type = '') => { const el = $('#status'); el.textContent = message; el.className = 'status ' + type; };
+    const getProject = (slug) => state.projects.find((project) => project.slug === slug);
+    function render() {
+      const order = state.layout.homepage.projectOrder;
+      $('#cards').innerHTML = order.map((slug) => {
+        const project = getProject(slug); const item = state.layout.homepage.projectLayout[slug];
+        return '<article class="editor-card" draggable="true" data-slug="' + slug + '">' +
+          '<div class="card-top"><span class="drag">⠿</span><span class="card-title">' + project.title + '</span><span class="card-meta">' + project.category + ' / ' + project.year + '</span></div>' +
+          '<div class="field"><label>显示</label><select data-key="visible"><option value="true"' + (item.visible ? ' selected' : '') + '>显示</option><option value="false"' + (!item.visible ? ' selected' : '') + '>隐藏</option></select></div>' +
+          '<div class="field"><label>宽度</label><select data-key="columns"><option value="1"' + (item.columns === 1 ? ' selected' : '') + '>1 列</option><option value="2"' + (item.columns === 2 ? ' selected' : '') + '>2 列</option></select></div>' +
+          '<div class="field"><label>高度</label><select data-key="rows"><option value="1"' + (item.rows === 1 ? ' selected' : '') + '>1 行</option><option value="2"' + (item.rows === 2 ? ' selected' : '') + '>2 行</option></select></div></article>';
+      }).join('');
+      $('#stage').innerHTML = order.map((slug, index) => {
+        const project = getProject(slug); const item = state.layout.homepage.projectLayout[slug];
+        if (!item.visible) return '';
+        return '<div class="stage-card" style="--color:' + project.color + ';--columns:' + item.columns + ';--rows:' + item.rows + '"><span class="stage-number">0' + (index + 1) + '</span><span class="stage-label">' + project.title + '</span></div>';
+      }).join('');
+      bindCards();
+    }
+    function bindCards() {
+      document.querySelectorAll('.editor-card').forEach((card) => {
+        card.addEventListener('dragstart', () => card.classList.add('dragging'));
+        card.addEventListener('dragend', () => {
+          card.classList.remove('dragging');
+          state.layout.homepage.projectOrder = [...document.querySelectorAll('.editor-card')].map((item) => item.dataset.slug);
+          render();
+        });
+        card.addEventListener('dragover', (event) => { event.preventDefault(); const dragging = $('.dragging'); if (dragging && dragging !== card) { const rect = card.getBoundingClientRect(); card.parentNode.insertBefore(dragging, event.clientY < rect.top + rect.height / 2 ? card : card.nextSibling); }});
+        card.querySelectorAll('select').forEach((input) => input.addEventListener('change', () => { const slug = card.dataset.slug; const key = input.dataset.key; state.layout.homepage.projectLayout[slug][key] = key === 'visible' ? input.value === 'true' : Number(input.value); render(); }));
+      });
+    }
+    async function load() { status('Loading…'); const response = await fetch('/api/layout'); if (!response.ok) throw new Error('Could not read layout'); const data = await response.json(); state.layout = data.layout; state.projects = data.projects; render(); status('Ready to edit', 'ok'); }
+    $('#save').addEventListener('click', async () => { const response = await fetch('/api/layout', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(state.layout) }); if (!response.ok) { status('Save failed', 'error'); return; } status('Saved to src/data/layout.json', 'ok'); $('#site-preview').contentWindow.location.reload(); });
+    $('#reload').addEventListener('click', () => load().catch((error) => status(error.message, 'error')));
+    $('#open-site').addEventListener('click', () => window.open('http://127.0.0.1:4324/?skipIntro=1', '_blank'));
+    load().catch((error) => status(error.message, 'error'));
+  </script>
+</body>
+</html>

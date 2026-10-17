@@ -1,4 +1,5 @@
 import editableSite from './site.json';
+import editableLayout from './layout.json';
 import aeraAir from './projects/aera-air.json';
 import moriLamp from './projects/mori-lamp.json';
 import careKit from './projects/care-kit.json';
@@ -36,6 +37,12 @@ export const site = {
 
 export const projects: Project[] = [aeraAir, moriLamp, careKit];
 export const notes = [evidenceNote, glbNote, cmfNote];
+export const layout = editableLayout;
+
+export const homeProjects = layout.homepage.projectOrder
+  .map((slug) => projects.find((project) => project.slug === slug))
+  .filter((project): project is Project => Boolean(project))
+  .filter((project) => layout.homepage.projectLayout[project.slug]?.visible !== false);
 
 export const getProject = (slug: string) => projects.find((project) => project.slug === slug);
 export const getNote = (slug: string) => notes.find((note) => note.slug === slug);

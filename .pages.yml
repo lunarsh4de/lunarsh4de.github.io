@@ -49,6 +49,12 @@ content:
         label: Profile principle Chinese
         type: rich-text
 
+  - name: layout
+    label: Homepage layout
+    type: file
+    path: src/data/layout.json
+    format: json
+
   - name: projects
     label: Projects
     type: collection
