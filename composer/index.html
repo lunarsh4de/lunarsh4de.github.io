@@ -16,52 +16,107 @@
     .browser-shell{display:flex;flex-direction:column}.browser-bar{height:38px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 12px}.dot{width:7px;height:7px;border-radius:50%;background:#d1d1ca}.browser-url{margin-left:8px;font:10px ui-monospace,monospace;color:var(--muted)}iframe{width:100%;height:100%;min-height:calc(100vh - 170px);border:0}
     @media(max-width:1000px){.app{grid-template-columns:290px 1fr}.canvas{grid-template-columns:1fr}.browser-shell{display:none}}
     @media(max-width:700px){header{padding:0 16px}.actions .secondary{display:none}.app{display:block}.panel{border-right:0;border-bottom:1px solid var(--line);max-height:none;padding:16px}.canvas{padding:16px}.preview-shell{min-height:500px}.stage{grid-auto-rows:110px}}
+    button:disabled{opacity:.4;cursor:default;transform:none}button:focus-visible,select:focus-visible{outline:2px solid #466c38;outline-offset:3px}
+    .card-top{flex-wrap:wrap}.card-top .card-meta{width:100%;margin:0 0 3px 24px}.moves{display:flex;gap:5px;margin-top:12px}.moves button{border:1px solid var(--line);background:white;border-radius:5px;padding:5px 10px;font-size:11px}
+    .stage-card{cursor:grab}.stage-card:active{cursor:grabbing}.stage-card.drag-over,.editor-card.drag-over{outline:2px solid #466c38;outline-offset:-2px}.stage:empty::before{content:'所有项目已隐藏，开启“显示”即可恢复。';font-size:12px;color:var(--muted);grid-column:1/-1}
+    .drag,.card-title,.stage-card{touch-action:none;user-select:none}.editor-card.dragging,.stage-card.dragging{opacity:.5}
+    .preview-heading{display:flex;justify-content:space-between;align-items:start;gap:12px}.preview-heading select{width:auto}.stage.mobile{grid-template-columns:1fr}.stage.mobile .stage-card{grid-column:auto;grid-row:auto;min-height:180px}
+    @media(max-width:700px){header{height:auto;min-height:72px;gap:12px;flex-wrap:wrap;padding-block:12px}.actions{gap:6px}.actions .secondary{display:inline-block}.button{padding:7px 10px}.browser-shell{display:flex;min-height:600px}iframe{min-height:600px}}
   </style>
 </head>
 <body>
-  <header><div class="brand">Portfolio Composer<small>Local visual editor</small></div><div class="actions"><button class="button secondary" id="reload">Reload</button><button class="button secondary" id="open-site">Open website</button><button class="button primary" id="save">Save layout</button></div></header>
+  <header><div class="brand">Portfolio Composer<small>本地作品集编辑器</small></div><div class="actions"><button class="button secondary" id="reload">重新读取</button><button class="button secondary" id="open-site" disabled>打开网站</button><button class="button primary" id="save" disabled>保存布局</button></div></header>
   <main class="app">
-    <aside class="panel"><h2>Homepage projects</h2><p class="hint">拖动卡片改变顺序。设置显示状态，以及产品在三列网格中占用的宽度和高度。保存会写入项目里的 src/data/layout.json。</p><div id="status" class="status"></div><div id="cards" class="card-list"></div></aside>
-    <section class="canvas"><div><h2>Layout preview</h2><div class="preview-shell"><div id="stage" class="stage"></div></div></div><div class="browser-shell"><div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-url">127.0.0.1:4324</span></div><iframe id="site-preview" title="Live Astro preview" src="http://127.0.0.1:4324/?skipIntro=1"></iframe></div></section>
+    <aside class="panel"><h2>首页作品</h2><p class="hint">拖动列表或画布里的卡片调整顺序，也可用上移 / 下移按钮。宽高以三列网格为单位。保存仅更新本地网站，发布需另行同步 GitHub。</p><div id="status" class="status" role="status" aria-live="polite"></div><div id="cards" class="card-list"></div></aside>
+    <section class="canvas"><div><div class="preview-heading"><h2>布局草稿</h2><select id="device" aria-label="布局预览尺寸"><option value="desktop">桌面三列</option><option value="mobile">手机单列</option></select></div><p class="hint">此处为布局示意，调整即时可见；实际网站预览在保存后更新。</p><div class="preview-shell"><div id="stage" class="stage"></div></div></div><div class="browser-shell"><div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-url">已保存的网站</span></div><iframe id="site-preview" title="已保存的网站预览"></iframe></div></section>
   </main>
   <script>
-    const state = { layout: null, projects: [] };
+    const state = { layout: null, projects: [], previewUrl: '', dirty: false, saving: false, dragging: null };
     const $ = (selector) => document.querySelector(selector);
     const status = (message, type = '') => { const el = $('#status'); el.textContent = message; el.className = 'status ' + type; };
     const getProject = (slug) => state.projects.find((project) => project.slug === slug);
+    const escape = (value) => String(value).replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    const changed = () => { state.dirty = true; status('有未保存的修改'); $('#save').disabled = false; };
+    const refreshPreview = () => { $('#site-preview').src = state.previewUrl + '&preview=' + Date.now(); };
     function render() {
       const order = state.layout.homepage.projectOrder;
-      $('#cards').innerHTML = order.map((slug) => {
+      $('#cards').innerHTML = order.map((slug, index) => {
         const project = getProject(slug); const item = state.layout.homepage.projectLayout[slug];
-        return '<article class="editor-card" draggable="true" data-slug="' + slug + '">' +
-          '<div class="card-top"><span class="drag">⠿</span><span class="card-title">' + project.title + '</span><span class="card-meta">' + project.category + ' / ' + project.year + '</span></div>' +
-          '<div class="field"><label>显示</label><select data-key="visible"><option value="true"' + (item.visible ? ' selected' : '') + '>显示</option><option value="false"' + (!item.visible ? ' selected' : '') + '>隐藏</option></select></div>' +
-          '<div class="field"><label>宽度</label><select data-key="columns"><option value="1"' + (item.columns === 1 ? ' selected' : '') + '>1 列</option><option value="2"' + (item.columns === 2 ? ' selected' : '') + '>2 列</option></select></div>' +
-          '<div class="field"><label>高度</label><select data-key="rows"><option value="1"' + (item.rows === 1 ? ' selected' : '') + '>1 行</option><option value="2"' + (item.rows === 2 ? ' selected' : '') + '>2 行</option></select></div></article>';
+        return '<article class="editor-card" data-sortable data-slug="' + escape(slug) + '">' +
+          '<div class="card-top"><span class="drag">⠿</span><span class="card-title">' + escape(project.title) + '</span><span class="card-meta">' + escape(project.category) + ' / ' + escape(project.year) + '</span></div>' +
+          '<div class="field"><label for="visible-' + index + '">显示</label><select id="visible-' + index + '" data-key="visible"><option value="true"' + (item.visible ? ' selected' : '') + '>显示</option><option value="false"' + (!item.visible ? ' selected' : '') + '>隐藏</option></select></div>' +
+          '<div class="field"><label for="columns-' + index + '">宽度</label><select id="columns-' + index + '" data-key="columns"><option value="1"' + (item.columns === 1 ? ' selected' : '') + '>1 列</option><option value="2"' + (item.columns === 2 ? ' selected' : '') + '>2 列</option></select></div>' +
+          '<div class="field"><label for="rows-' + index + '">高度</label><select id="rows-' + index + '" data-key="rows"><option value="1"' + (item.rows === 1 ? ' selected' : '') + '>1 行</option><option value="2"' + (item.rows === 2 ? ' selected' : '') + '>2 行</option></select></div>' +
+          '<div class="moves"><button data-move="-1"' + (index === 0 ? ' disabled' : '') + '>↑ 上移</button><button data-move="1"' + (index === order.length - 1 ? ' disabled' : '') + '>↓ 下移</button></div></article>';
       }).join('');
       $('#stage').innerHTML = order.map((slug, index) => {
         const project = getProject(slug); const item = state.layout.homepage.projectLayout[slug];
         if (!item.visible) return '';
-        return '<div class="stage-card" style="--color:' + project.color + ';--columns:' + item.columns + ';--rows:' + item.rows + '"><span class="stage-number">0' + (index + 1) + '</span><span class="stage-label">' + project.title + '</span></div>';
+        const color = /^#[0-9a-f]{3,8}$/i.test(project.color) ? project.color : '#eeeeee';
+        return '<div class="stage-card" data-sortable data-slug="' + escape(slug) + '" style="--color:' + color + ';--columns:' + item.columns + ';--rows:' + item.rows + '"><span class="stage-number">0' + (index + 1) + '</span><span class="stage-label">' + escape(project.title) + '</span></div>';
       }).join('');
       bindCards();
     }
     function bindCards() {
-      document.querySelectorAll('.editor-card').forEach((card) => {
-        card.addEventListener('dragstart', () => card.classList.add('dragging'));
-        card.addEventListener('dragend', () => {
-          card.classList.remove('dragging');
-          state.layout.homepage.projectOrder = [...document.querySelectorAll('.editor-card')].map((item) => item.dataset.slug);
-          render();
+      document.querySelectorAll('[data-sortable]').forEach((card) => {
+        let start, target;
+        card.addEventListener('pointerdown', (event) => {
+          if (event.button !== 0 || event.target.closest('select, button, label')) return;
+          start = [event.clientX, event.clientY]; target = null;
+          card.setPointerCapture(event.pointerId);
         });
-        card.addEventListener('dragover', (event) => { event.preventDefault(); const dragging = $('.dragging'); if (dragging && dragging !== card) { const rect = card.getBoundingClientRect(); card.parentNode.insertBefore(dragging, event.clientY < rect.top + rect.height / 2 ? card : card.nextSibling); }});
-        card.querySelectorAll('select').forEach((input) => input.addEventListener('change', () => { const slug = card.dataset.slug; const key = input.dataset.key; state.layout.homepage.projectLayout[slug][key] = key === 'visible' ? input.value === 'true' : Number(input.value); render(); }));
+        card.addEventListener('pointermove', (event) => {
+          if (!start || Math.hypot(event.clientX - start[0], event.clientY - start[1]) < 8) return;
+          state.dragging = card.dataset.slug; card.classList.add('dragging');
+          document.querySelectorAll('.drag-over').forEach((el) => el.classList.remove('drag-over'));
+          target = document.elementFromPoint(event.clientX, event.clientY)?.closest('[data-sortable]');
+          if (target && target.dataset.slug !== state.dragging) target.classList.add('drag-over');
+        });
+        card.addEventListener('pointerup', () => {
+          if (!start) return;
+          const order = state.layout.homepage.projectOrder;
+          const from = order.indexOf(state.dragging), to = order.indexOf(target?.dataset.slug);
+          if (from >= 0 && to >= 0 && from !== to) {
+            const [slug] = order.splice(from, 1); order.splice(to, 0, slug); changed();
+          }
+          start = null; state.dragging = null; render();
+        });
+        card.addEventListener('pointercancel', () => { start = null; state.dragging = null; render(); });
+        card.querySelectorAll('select').forEach((input) => input.addEventListener('change', () => { const slug = card.dataset.slug; const key = input.dataset.key; state.layout.homepage.projectLayout[slug][key] = key === 'visible' ? input.value === 'true' : Number(input.value); changed(); render(); document.getElementById(input.id)?.focus(); }));
+        card.querySelectorAll('[data-move]').forEach((button) => button.addEventListener('click', () => {
+          const order = state.layout.homepage.projectOrder, index = order.indexOf(card.dataset.slug);
+          const next = index + Number(button.dataset.move);
+          if (next < 0 || next >= order.length) return;
+          [order[index], order[next]] = [order[next], order[index]]; changed(); render();
+        }));
       });
     }
-    async function load() { status('Loading…'); const response = await fetch('/api/layout'); if (!response.ok) throw new Error('Could not read layout'); const data = await response.json(); state.layout = data.layout; state.projects = data.projects; render(); status('Ready to edit', 'ok'); }
-    $('#save').addEventListener('click', async () => { const response = await fetch('/api/layout', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(state.layout) }); if (!response.ok) { status('Save failed', 'error'); return; } status('Saved to src/data/layout.json', 'ok'); $('#site-preview').contentWindow.location.reload(); });
-    $('#reload').addEventListener('click', () => load().catch((error) => status(error.message, 'error')));
-    $('#open-site').addEventListener('click', () => window.open('http://127.0.0.1:4324/?skipIntro=1', '_blank'));
+    async function load() {
+      status('读取中…');
+      const response = await fetch('/api/layout');
+      if (!response.ok) throw new Error('读取失败，请确认本地服务已启动后重试。');
+      const data = await response.json();
+      state.layout = data.layout; state.projects = data.projects; state.previewUrl = data.previewUrl; state.dirty = false;
+      render(); refreshPreview(); $('#save').disabled = true; $('#open-site').disabled = false; status('已载入本地布局', 'ok');
+    }
+    $('#save').addEventListener('click', async () => {
+      if (!state.layout || state.saving) return;
+      state.saving = true;
+      const payload = JSON.stringify(state.layout);
+      $('#save').disabled = true; $('#reload').disabled = true; status('保存中…');
+      try {
+        const response = await fetch('/api/layout', { method: 'POST', headers: {'Content-Type':'application/json'}, body: payload });
+        if (!response.ok) throw new Error('保存失败，请重试。你的草稿仍保留在此页面。');
+        state.dirty = JSON.stringify(state.layout) !== payload;
+        status(state.dirty ? '上一版已保存；还有新修改待保存' : '已保存到本地 · 尚未发布到 GitHub', 'ok');
+        refreshPreview();
+      } catch (error) { status(error.message, 'error'); }
+      finally { state.saving = false; $('#save').disabled = !state.dirty; $('#reload').disabled = false; }
+    });
+    $('#reload').addEventListener('click', () => { if (!state.dirty || confirm('放弃未保存的修改，重新读取本地布局？')) load().catch((error) => status(error.message, 'error')); });
+    $('#open-site').addEventListener('click', () => window.open(state.previewUrl, '_blank', 'noopener'));
+    $('#device').addEventListener('change', (event) => $('#stage').classList.toggle('mobile', event.target.value === 'mobile'));
+    window.addEventListener('beforeunload', (event) => { if (state.dirty) { event.preventDefault(); event.returnValue = ''; } });
     load().catch((error) => status(error.message, 'error'));
   </script>
 </body>

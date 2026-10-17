@@ -1,7 +1,6 @@
 import { createServer } from 'node:http';
-import { readFile, writeFile } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
-import { extname, join, resolve } from 'node:path';
+import { readFile, writeFile, readdir, rename } from 'node:fs/promises';
+import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
 
@@ -10,6 +9,10 @@ const editorFile = join(root, 'composer', 'index.html');
 const layoutFile = join(root, 'src', 'data', 'layout.json');
 const projectsDir = join(root, 'src', 'data', 'projects');
 const port = Number(process.env.COMPOSER_PORT || 4325);
+const origin = `http://127.0.0.1:${port}`;
+let astro;
+let previewUrl;
+let saving = false;
 
 const send = (res, status, body, type = 'application/json; charset=utf-8') => {
   res.writeHead(status, { 'Content-Type': type, 'Cache-Control': 'no-store' });
@@ -17,7 +20,7 @@ const send = (res, status, body, type = 'application/json; charset=utf-8') => {
 };
 
 const readProjects = async () => {
-  const names = ['aera-air.json', 'mori-lamp.json', 'care-kit.json'];
+  const names = (await readdir(projectsDir)).filter((name) => name.endsWith('.json')).sort();
   return Promise.all(names.map(async (name) => JSON.parse(await readFile(join(projectsDir, name), 'utf8'))));
 };
 
@@ -40,23 +43,47 @@ const normalize = (input, knownSlugs) => {
 
 const server = createServer(async (req, res) => {
   try {
+    // Only the local editor may write files. Reject foreign origins and DNS rebinding.
+    if (req.headers.host !== `127.0.0.1:${port}` || (req.headers.origin && req.headers.origin !== origin)) {
+      send(res, 403, { error: 'Open the editor using its 127.0.0.1 address.' });
+      return;
+    }
     if (req.method === 'GET' && req.url === '/') {
       send(res, 200, await readFile(editorFile, 'utf8'), 'text/html; charset=utf-8');
       return;
     }
     if (req.method === 'GET' && req.url === '/api/layout') {
+      if (!previewUrl) { send(res, 503, { error: 'Preview is starting. Please reload in a moment.' }); return; }
       const projects = await readProjects();
       const layout = JSON.parse(await readFile(layoutFile, 'utf8'));
-      send(res, 200, { layout: normalize(layout, projects.map((item) => item.slug)), projects });
+      send(res, 200, { layout: normalize(layout, projects.map((item) => item.slug)), projects, previewUrl });
       return;
     }
     if (req.method === 'POST' && req.url === '/api/layout') {
+      if (req.headers.origin !== origin || req.headers['content-type'] !== 'application/json') {
+        send(res, 403, { error: 'Save from the local Composer page.' });
+        return;
+      }
+      if (saving) { send(res, 409, { error: 'A save is already in progress.' }); return; }
       let body = '';
-      for await (const chunk of req) body += chunk;
-      if (body.length > 1000000) throw new Error('Layout payload is too large.');
+      let size = 0;
+      for await (const chunk of req) {
+        size += chunk.length;
+        if (size > 65536) { send(res, 413, { error: 'Layout payload is too large.' }); return; }
+        body += chunk;
+      }
+      const input = JSON.parse(body);
+      if (input.version !== 1 || !Array.isArray(input.homepage?.projectOrder) || !input.homepage?.projectLayout) {
+        throw new Error('Invalid layout format.');
+      }
       const projects = await readProjects();
-      const layout = normalize(JSON.parse(body), projects.map((item) => item.slug));
-      await writeFile(layoutFile, JSON.stringify(layout, null, 2) + '\n', 'utf8');
+      const layout = normalize(input, projects.map((item) => item.slug));
+      if (saving) { send(res, 409, { error: 'A save is already in progress.' }); return; }
+      saving = true;
+      try {
+        await writeFile(layoutFile + '.tmp', JSON.stringify(layout, null, 2) + '\n', 'utf8');
+        await rename(layoutFile + '.tmp', layoutFile);
+      } finally { saving = false; }
       send(res, 200, { ok: true, layout });
       return;
     }
@@ -66,27 +93,41 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(port, '127.0.0.1', () => {
-  console.log('Portfolio Composer: http://127.0.0.1:' + port);
-  console.log('Astro preview:       http://127.0.0.1:4324/?skipIntro=1');
-});
-
-// Spawning `npm.cmd` directly can return EINVAL in some Node 24 + PowerShell
-// hosts. Calling npm's JS entry point through the current Node executable is
-// equivalent and works consistently on Windows and Unix.
-const npmCli = resolve(process.execPath, '..', 'node_modules', 'npm', 'bin', 'npm-cli.js');
-const astro = spawn(process.execPath, [npmCli, 'run', 'dev', '--', '--host', '127.0.0.1', '--port', '4324'], {
-  cwd: root,
-  stdio: 'inherit',
-  // `windowsHide` combined with inherited stdio can throw EINVAL in the
-  // embedded PowerShell runtime. Keep the child attached so both logs and
-  // shutdown behaviour stay predictable on Windows.
-  windowsHide: false,
-});
-
-const stop = () => {
-  astro.kill();
+const stop = async () => {
   server.close();
+  astro?.kill();
+  process.exit(0);
 };
 process.on('SIGINT', stop);
 process.on('SIGTERM', stop);
+
+try {
+  await new Promise((accept, reject) => {
+    server.once('error', reject);
+    server.listen(port, '127.0.0.1', accept);
+  });
+  // Start this workspace directly; use the actual port if 4324 is already busy.
+  astro = spawn(process.execPath, [join(root, 'node_modules', 'astro', 'astro.js'), 'dev', '--host', '127.0.0.1', '--port', '4324'], {
+    cwd: root, stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true,
+  });
+  astro.stderr.on('data', (chunk) => process.stderr.write(chunk));
+  astro.on('exit', (code) => { server.close(); process.exit(code ?? 0); });
+  await new Promise((accept, reject) => {
+    astro.once('error', reject);
+    astro.once('exit', (code) => reject(new Error(`Astro stopped (${code}).`)));
+    let output = '';
+    astro.stdout.on('data', (chunk) => {
+      process.stdout.write(chunk);
+      output = (output + chunk.toString()).slice(-4000);
+      const match = output.match(/http:\/\/127\.0\.0\.1:(\d+)\//);
+      if (match) { previewUrl = `http://127.0.0.1:${match[1]}/?skipIntro=1`; accept(); }
+    });
+  });
+  console.log('Portfolio Composer: ' + origin);
+  console.log('Astro preview:       ' + previewUrl);
+} catch (error) {
+  console.error('Could not start Composer:', error.message);
+  server.close();
+  astro?.kill();
+  process.exit(1);
+}

@@ -12,12 +12,12 @@
         "columns": 2,
         "rows": 2
       },
-      "mori-lamp": {
+      "care-kit": {
         "visible": true,
         "columns": 1,
         "rows": 1
       },
-      "care-kit": {
+      "mori-lamp": {
         "visible": true,
         "columns": 1,
         "rows": 1

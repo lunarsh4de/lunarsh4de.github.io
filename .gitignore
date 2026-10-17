@@ -3,3 +3,4 @@ dist/
 .astro/
 property-information-*.tgz
 .DS_Store
+output/qa/

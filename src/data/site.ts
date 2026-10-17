@@ -1,8 +1,5 @@
 import editableSite from './site.json';
 import editableLayout from './layout.json';
-import aeraAir from './projects/aera-air.json';
-import moriLamp from './projects/mori-lamp.json';
-import careKit from './projects/care-kit.json';
 import evidenceNote from './notes/why-a-product-portfolio-needs-evidence.json';
 import glbNote from './notes/preparing-a-glb-for-the-web.json';
 import cmfNote from './notes/cmf-is-a-product-strategy.json';
@@ -35,9 +32,21 @@ export const site = {
   },
 };
 
-export const projects: Project[] = [aeraAir, moriLamp, careKit];
+const projectFiles = import.meta.glob<Project>('./projects/*.json', { eager: true, import: 'default' });
+export const projects: Project[] = Object.keys(projectFiles).sort().map((path) => projectFiles[path]);
 export const notes = [evidenceNote, glbNote, cmfNote];
-export const layout = editableLayout;
+type TileLayout = { visible: boolean; columns: number; rows: number };
+const tileSource = editableLayout.homepage.projectLayout as Record<string, TileLayout>;
+export const layout = {
+  version: 1,
+  homepage: {
+    projectOrder: [...new Set([...editableLayout.homepage.projectOrder, ...projects.map((project) => project.slug)])],
+    projectLayout: Object.fromEntries(projects.map(({ slug }) => {
+      const tile = tileSource[slug];
+      return [slug, { visible: tile?.visible !== false, columns: tile?.columns === 2 ? 2 : 1, rows: tile?.rows === 2 ? 2 : 1 }];
+    })) as Record<string, TileLayout>,
+  },
+};
 
 export const homeProjects = layout.homepage.projectOrder
   .map((slug) => projects.find((project) => project.slug === slug))
