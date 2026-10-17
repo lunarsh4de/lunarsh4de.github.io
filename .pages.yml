@@ -7,6 +7,7 @@ content:
     label: Site settings
     type: file
     path: src/data/site.json
+    format: json
     fields:
       - name: name
         label: Name
@@ -52,6 +53,7 @@ content:
     label: Projects
     type: collection
     path: src/data/projects
+    format: json
     view:
       fields: [title, category, year]
     fields:
@@ -112,6 +114,7 @@ content:
     label: Notes
     type: collection
     path: src/data/notes
+    format: json
     view:
       fields: [title, date, tag]
     fields:
