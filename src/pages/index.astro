@@ -1,46 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PortfolioImage from '../components/PortfolioImage.astro';
 import { homeProjects, layout, site } from '../data/site';
+import '../styles/portfolio.css';
 ---
-<BaseLayout title={site.name}>
-  <div class="intro-screen" data-intro aria-hidden="true">
-    <div class="intro-top"><span>YANG / PRODUCT DESIGN</span><div class="intro-top-actions"><div class="language-switch language-switch--inverse" data-language-switch aria-label="Language"><button type="button" data-language="cn">CN</button><span>/</span><button type="button" data-language="en">EN</button></div><span class="mono">INITIALIZING 001</span></div></div>
-    <div class="intro-product"><div class="intro-product__light"></div><div class="intro-product__body"><i></i><i></i></div><div class="intro-product__base"></div></div>
-    <div class="intro-bottom"><span data-i18n="intro-label" data-cn="正在构建的产品" data-en="Objects in progress">Objects in progress</span><button class="intro-enter" type="button" data-enter><span data-i18n="intro-enter" data-cn="进入作品集" data-en="Enter portfolio">Enter portfolio</span> <span>↗</span></button><span class="mono">2026</span></div>
-  </div>
-
+<BaseLayout title={site.name} contentLang="zh-CN">
   <div class="reference-home homepage-showcase">
     <aside class="reference-sidebar">
       <div class="reference-mobile-bar"><a class="reference-brand" href="/">{site.name}</a><button class="reference-menu" type="button" aria-expanded="false" aria-controls="reference-nav">Menu</button></div>
       <div class="reference-sidebar-inner">
         <a class="reference-brand" href="/">{site.name}</a>
-        <p class="reference-tagline"><span data-i18n="tagline" data-cn="产品策略，<br />人因研究与硬件开发" data-en="Product strategy,<br />human factors & hardware">Product strategy,<br />human factors &amp; hardware</span></p>
+        <p class="reference-tagline"><span data-i18n="tagline" data-cn="产品策略，<br />人因研究与硬件开发" data-en="Product strategy,<br />human factors & hardware">产品策略，<br />人因研究与硬件开发</span></p>
         <nav class="reference-nav" id="reference-nav" aria-label="Portfolio navigation">
-          <a class="is-current" href="#project-01">Design projects</a>
-          <a href="/notes/">Notes</a>
-          <a href="/about/">About</a>
-          <a href={`mailto:${site.email}`}>Contact</a>
+          <a class="is-current" href="/work/">Design projects</a>
+          <a href="/notes/">Notes</a><a href="/about/">About</a><a href={`mailto:${site.email}`}>Contact</a>
         </nav>
         <div class="reference-sidebar-foot"><span class="mono">{site.location}</span><span class="mono">© 2026</span></div>
       </div>
     </aside>
-
-    <section class="reference-content product-feed" aria-label="Selected product projects">
-      {homeProjects.map((project, index) => {
-        const cardLayout = layout.homepage.projectLayout[project.slug] ?? { columns: 1, rows: 1 };
-        const cardId = 'project-' + String(index + 1).padStart(2, '0');
-        const cardStyle = '--card-color: ' + project.color + '; grid-column: span ' + cardLayout.columns + '; grid-row: span ' + cardLayout.rows + ';';
-        return (
-        <a class="product-poster" id={cardId} href={'/work/' + project.slug + '/'} style={cardStyle} aria-label={project.title + ', ' + project.category + ', ' + project.year}>
-          <span class="product-poster-index mono">{String(index + 1).padStart(2, '0')} / {String(homeProjects.length).padStart(2, '0')}</span>
-          <span class="product-poster-media" aria-hidden="true">
-            <span class="product-poster-grid"></span>
-            <span class="product-poster-object card-object"><span></span><span></span></span>
-            <span class="product-poster-shadow"></span>
-          </span>
-        </a>
-        );
-      })}
-    </section>
+    <div class="portfolio-home-content">
+      <header class="portfolio-home-heading"><div><p class="mono">SELECTED WORK / 2020–2026</p><h1>让想法，走进生活。</h1></div><p>产品 · 系统 · 数字体验<br /><span>{String(homeProjects.length).padStart(2,'0')} 个设计项目</span></p></header>
+      <section class="product-feed portfolio-feed" aria-label="设计作品">
+        {homeProjects.map((project, index) => {
+          const tile = layout.homepage.projectLayout[project.slug];
+          return <a class={`product-poster portfolio-poster portfolio-poster--${project.slug}`} id={`project-${String(index+1).padStart(2,'0')}`} href={`/work/${project.slug}/`} style={`--card-color:${project.color};grid-column:span ${tile.columns};grid-row:span ${tile.rows}`}>
+            <PortfolioImage src={project.image!} alt={project.hero} eager={index === 0} />
+            <span class="portfolio-poster-index mono">{String(index+1).padStart(2,'0')} / {String(homeProjects.length).padStart(2,'0')}</span>
+            <span class="portfolio-poster-label"><span>{project.category}</span><strong>{project.title}</strong><span>{project.subtitle}</span></span>
+            <span class="portfolio-poster-arrow" aria-hidden="true">↗</span>
+          </a>;
+        })}
+      </section>
+      <footer class="portfolio-home-foot"><span class="mono">ZICHEN YANG / DESIGN PORTFOLIO</span><a href={`mailto:${site.email}`}>聊聊新的想法 ↗</a></footer>
+    </div>
   </div>
 </BaseLayout>

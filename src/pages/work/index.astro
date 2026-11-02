@@ -1,8 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { projects } from '../../data/site';
+import PortfolioImage from '../../components/PortfolioImage.astro';
+import { homeProjects } from '../../data/site';
+import '../../styles/portfolio.css';
 ---
-<BaseLayout title="Work">
-  <section class="archive-head section-pad"><p class="eyebrow"><span class="eyebrow-mark"></span>Selected work</p><h1>Objects with<br /><em>a reason to exist.</em></h1><p class="archive-lede">A selection of product concepts, systems and physical prototypes across home, healthcare and everyday tools.</p></section>
-  <section class="archive-grid section-pad section-rule">{projects.map((project, index) => <a class="archive-card" href={`/work/${project.slug}/`} style={`--card-color: ${project.color}`}><div class="archive-card-visual"><div class="card-object"><span></span><span></span></div><span class="mono">0{index + 1}</span></div><div class="archive-card-copy"><div><p class="mono">{project.category} / {project.year}</p><h2>{project.title}</h2></div><span>↗</span><p>{project.short}</p></div></a>)}</section>
+<BaseLayout title="设计作品" contentLang="zh-CN">
+  <header class="portfolio-archive-head"><p class="mono">SELECTED WORK / 2020–2026</p><h1>设计作品<span>Selected projects</span></h1><p>从使用情境出发，探索产品、系统与数字体验。</p></header>
+  <section class="portfolio-archive" aria-label="作品列表">
+    {homeProjects.map((project,index) => <a class={`portfolio-archive-card portfolio-archive-card--${project.slug}`} href={`/work/${project.slug}/`}>
+      <div class="portfolio-archive-image" style={`background:${project.color}`}><PortfolioImage src={project.image!} alt={project.hero} eager={index === 0} /><span class="mono">{String(index+1).padStart(2,'0')}</span></div>
+      <div class="portfolio-archive-copy"><p>{project.category}</p><h2>{project.title}<span aria-hidden="true">↗</span></h2><p>{project.short}</p></div>
+    </a>)}
+  </section>
 </BaseLayout>

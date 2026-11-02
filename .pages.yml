@@ -87,6 +87,12 @@ content:
       - name: hero
         label: Hero description
         type: text
+      - name: image
+        label: Cover image
+        type: image
+      - name: subtitle
+        label: English project subtitle
+        type: string
       - name: model
         label: GLB model path
         type: string
@@ -115,6 +121,16 @@ content:
           - name: body
             label: Body
             type: rich-text
+
+  - name: project_stories
+    label: Project stories (Markdown)
+    type: collection
+    path: src/content/projects
+    format: markdown
+    fields:
+      - name: body
+        label: Case study
+        type: rich-text
 
   - name: notes
     label: Notes

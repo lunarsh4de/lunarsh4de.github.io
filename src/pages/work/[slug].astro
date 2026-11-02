@@ -1,20 +1,58 @@
 ---
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProductViewer from '../../components/ProductViewer.astro';
-import { projects } from '../../data/site';
+import PortfolioImage from '../../components/PortfolioImage.astro';
+import { projects, homeProjects } from '../../data/site';
+import '../../styles/portfolio.css';
 
-export function getStaticPaths() {
-  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+export async function getStaticPaths() {
+  const stories = await getCollection('projects');
+  return projects.map((project) => {
+    const story = stories.find((entry) => entry.id === project.slug);
+    if (!story) throw new Error(`Missing case study: ${project.slug}`);
+    return { params: { slug: project.slug }, props: { project, story } };
+  });
 }
-
-const { project } = Astro.props;
+const { project, story } = Astro.props;
+const { Content, headings: allHeadings } = await render(story);
+const headings = allHeadings.filter((h) => h.depth === 2);
+const position = homeProjects.findIndex((item) => item.slug === project.slug);
+const next = homeProjects[(position + 1) % homeProjects.length];
 ---
-<BaseLayout title={project.title} description={project.intro}>
-  <article class="case-study">
-    <header class="case-head section-pad"><a class="back-link" href="/work/">← All work</a><div class="case-title"><div><p class="eyebrow"><span class="eyebrow-mark"></span>{project.category} / {project.year}</p><h1>{project.title}</h1></div><p>{project.intro}</p></div></header>
-    <section class="case-viewer section-pad"><ProductViewer model={project.model} label={`${project.title} / interactive model`} color={project.color} /><div class="case-viewer-note"><span class="mono">MODEL STUDY</span><strong>{project.hero}</strong><span class="mono">GLB SLOT / VIEWER V.01</span></div></section>
-    <section class="case-facts section-pad section-rule">{project.facts.map((fact) => <div><span class="mono">{fact.label}</span><strong>{fact.value}</strong></div>)}</section>
-    <section class="case-sections section-pad">{project.sections.map((section, index) => <div class="case-section"><div class="case-section-index mono">0{index + 1}</div><div><p class="eyebrow">{section.eyebrow}</p><h2>{section.title}</h2><p>{section.body}</p></div><div class="case-section-media" style={`--card-color: ${project.color}`}><div class="card-object"><span></span><span></span></div></div></div>)}</section>
-    <footer class="case-footer section-pad section-rule"><a class="arrow-link" href="/work/">Back to selected work <span>↗</span></a><a class="arrow-link" href="/notes/">Read design notes <span>↗</span></a></footer>
+<BaseLayout title={project.title} description={project.intro} contentLang="zh-CN" socialImage={project.image}>
+  <article class={`portfolio-case portfolio-case--${project.slug}`} style={`--project-color:${project.color}`}>
+    <header class="portfolio-case-head" id="project-top">
+      <div class="case-topline"><a href="/work/">← 全部作品 <span>All projects</span></a><span class="mono">{String(position + 1).padStart(2, '0')} / {String(homeProjects.length).padStart(2, '0')}</span></div>
+      <p class="case-category">{project.category}</p>
+      <h1>{project.title}</h1>
+      <p class="case-subtitle">{project.subtitle}</p>
+      <p class="case-intro">{project.intro}</p>
+    </header>
+    <figure class="case-cover">
+      <a href={project.image} data-lightbox aria-label={`放大查看：${project.hero}`} target="_blank" rel="noopener">
+        <PortfolioImage src={project.image!} alt={project.hero} eager />
+        <span class="image-enlarge" aria-hidden="true">↗</span>
+      </a>
+    </figure>
+    <dl class="portfolio-facts">{project.facts.map((fact) => <div><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}</dl>
+    <div class="case-reader">
+      <nav class="case-toc" aria-label="作品章节">
+        <p class="mono">IN THIS PROJECT</p>
+        <ol>{headings.map((h, i) => <li><a href={`#${h.slug}`}><span>{String(i+1).padStart(2,'0')}</span>{h.text}</a></li>)}</ol>
+        <a class="case-top-link" href="#project-top">回到顶部 ↑</a>
+      </nav>
+      <div class="case-prose" lang="zh-CN"><Content /></div>
+    </div>
+    <footer class="portfolio-next">
+      <a href="/work/" class="all-projects-link">← 全部作品</a>
+      <a href={`/work/${next.slug}/`} class="next-project"><span class="mono">NEXT PROJECT</span><strong>{next.title} <span>↗</span></strong><span>{next.subtitle}</span></a>
+    </footer>
   </article>
+  <dialog class="image-dialog" aria-labelledby="image-dialog-caption">
+    <div class="image-dialog-toolbar"><p id="image-dialog-caption"></p><div><button type="button" data-image-zoom aria-pressed="false">原尺寸</button><button type="button" data-image-close aria-label="关闭图片">关闭 ×</button></div></div>
+    <div class="image-dialog-scroll"><img alt="" /></div>
+  </dialog>
+  <script>
+    import '../../scripts/case-study';
+  </script>
 </BaseLayout>

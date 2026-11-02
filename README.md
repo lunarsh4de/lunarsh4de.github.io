@@ -1,61 +1,43 @@
-# Industrial Portfolio / V0
+# Zichen Yang / Design Portfolio
 
-第一版是 Astro 静态站，部署目标是 GitHub Pages。当前只搭建基础框架：
+Astro 静态作品集，部署到 GitHub Pages。
 
-- 产品型首页和开屏动画
-- `model-viewer` 产品查看器占位
-- Work / Notes 页面（统一使用左侧面板导航）
-- 桌面端负色跟随光标
-- 手机端响应式布局，并自动关闭光标效果
-- 个人信息、项目和笔记已拆分为可编辑的 JSON 内容文件
-- 根目录提供 `.pages.yml`，可接入 Pages CMS
+当前包含 5 个从用户作品集 PDF 接入的独立作品：管道清理者、Plant 造口袋、智储家庭能源、参数化桌面摆件、青创共富农场网页设计。
 
-## 本地工作流
+## 本地预览
 
-```bash
-npm install
+```powershell
+npm ci
 npm run dev
 ```
 
-打开 `http://127.0.0.1:4321/`。修改 `src/` 后，浏览器会自动刷新。
+默认打开 `http://127.0.0.1:4321/`。
 
-推荐使用 VS Code 或 Cursor。当前版本先采用“代码编辑 + 实时预览”的方式，避免拖拽编辑器破坏 Astro 组件和响应式结构。
+## 内容编辑
 
-## 本地运行
+- `src/data/projects/*.json`：每个作品的标题、简介、封面与事实信息。
+- `src/content/projects/*.md`：独立的作品正文，可编辑文字、章节与图片。
+- `src/data/portfolio-media.json`：内嵌图片来源与响应式图片版本。
+- `src/data/portfolio-vectors.json`：从 PDF 提取的 SVG 结构图来源。
+- `src/data/layout.json`：首页顺序、显隐和网格尺寸。
+- `src/data/site.json`：个人简介与站点信息。
+- `public/images/projects/`：各作品的 WebP 与 SVG 素材。
+- `.pages.yml`：Pages CMS 配置。
 
-```bash
-npm install
-npm run dev
+本地布局编辑器仍可通过 `npm run composer` 启动，见 `docs/CONTENT-EDITOR.md`。
+
+## 构建与检查
+
+```powershell
+npm run build
+npm run preview -- --host 127.0.0.1 --port 4331
+# 另一个终端
+npx playwright install chromium
+npm run verify:portfolio
 ```
 
-## 文件约定
+检查涵盖全部静态路由、4 种屏幕宽度、图片解码、章节跳转、图片放大、键盘操作、客户端导航与无脚本正文。使用本机其他 Chrome 时，设置 `PORTFOLIO_CHROMIUM` 为可执行文件绝对路径。
 
-- `src/data/site.ts`：内容数据的类型与统一导出层。
-- `src/data/site.json`：About 页面个人信息与中英文文案。
-- `src/data/projects/`：每个项目一个 JSON 文件，可新增或删除。
-- `src/data/notes/`：每篇笔记一个 JSON 文件，可新增或删除。
-- `src/pages/`：页面路由和页面结构。
-- `src/components/`：可复用组件，例如产品查看器。
-- `src/styles/`：全局样式和局部覆盖。
-- `public/models/`：网页使用的 `.glb` 文件。
-- `public/images/`：KeyShot 渲染图、草图、CMF 和原型照片。
-- `public/posters/`：3D 模型加载前的预览图。
-- `public/videos/`：产品动画和过程视频。
-- `docs/CONTENT-EDITOR.md`：Pages CMS 与本地编辑流程。
+`dist/` 为发布内容，Composer、本地 PDF 校对图和 QA 文件不进入静态发布。当前 GitHub Actions 在 `main` 更新后自动部署。
 
-## 下一轮
-
-1. 把真实的 `.glb` 文件放入 `public/models/`，给项目数据加上 `model` 路径。
-2. 给产品详情页加入真实图片、草图、结构图和 CMF 资料。
-3. 再增加模型热点、材质切换和爆炸视图。
-4. 最后接 GitHub CMS，让内容编辑不需要改组件代码。
-
-## 设计与研究资料
-
-- `docs/PROMPT.md`：后续让 Codex 修改网站时使用的工作 prompt。
-- `docs/DESIGN-LANGUAGE.md`：排版、交互和内容语言。
-- `docs/MEMORY-GRAPH.md`：参考站、技术架构和设计决策的关系图。
-- `docs/research/repositories.md`：已锁定 commit 的开源仓库、许可证和复用边界。
-- `C:/Users/81489/.codex/skills/industrial-portfolio-system`：本机可调用的工业设计作品集维护 skill。
-
-当前的 `MODEL SLOT / GLB` 是刻意保留的占位，不代表最终工业产品模型。
+详见 `docs/PORTFOLIO-IMPORT.md`，其中记录 PDF 页与作品的对应关系、提取方法、文案处理与后续编辑方式。

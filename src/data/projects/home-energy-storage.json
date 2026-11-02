@@ -1,0 +1,19 @@
+{
+  "slug": "home-energy-storage",
+  "title": "智储 · 家庭能源",
+  "subtitle": "Home energy storage series",
+  "category": "能源设备 / 系列产品设计",
+  "year": "作品集 2020–2026",
+  "short": "以模块组合回应家庭、阳台与户外用电需求。",
+  "intro": "面向希望利用阳台光伏、提升家庭用电灵活性的用户，以场景分析、AI 辅助造型探索与模块化设计，形成兼顾空间利用、日常操作和容量扩展的家庭储能系列。",
+  "color": "#ecece7",
+  "hero": "阳台微逆智能储能系列产品",
+  "image": "/images/projects/home-energy-storage/hero.webp",
+  "sourcePages": [5],
+  "facts": [
+    {"label": "项目背景", "value": "校企合作 · 生成式人工智能辅助设计"},
+    {"label": "设计方法", "value": "场景分析 · AI 探索 · 草图与三维建模"},
+    {"label": "系列构成", "value": "堆叠扩展式 · 阳台一体式 · 户外便携式"}
+  ],
+  "sections": []
+}

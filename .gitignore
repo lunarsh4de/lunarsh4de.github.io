@@ -4,3 +4,4 @@ dist/
 property-information-*.tgz
 .DS_Store
 output/qa/
+tmp/portfolio/

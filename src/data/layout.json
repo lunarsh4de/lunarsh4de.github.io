@@ -2,25 +2,37 @@
   "version": 1,
   "homepage": {
     "projectOrder": [
-      "aera-air",
-      "mori-lamp",
-      "care-kit"
+      "pipe-cleaning-robot",
+      "plant-ostomy",
+      "home-energy-storage",
+      "parametric-objects",
+      "youth-farm"
     ],
     "projectLayout": {
-      "aera-air": {
+      "pipe-cleaning-robot": {
         "visible": true,
         "columns": 2,
         "rows": 2
       },
-      "care-kit": {
+      "plant-ostomy": {
         "visible": true,
         "columns": 1,
         "rows": 1
       },
-      "mori-lamp": {
+      "home-energy-storage": {
         "visible": true,
         "columns": 1,
         "rows": 1
+      },
+      "parametric-objects": {
+        "visible": true,
+        "columns": 1,
+        "rows": 2
+      },
+      "youth-farm": {
+        "visible": true,
+        "columns": 2,
+        "rows": 2
       }
     }
   }

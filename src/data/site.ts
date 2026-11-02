@@ -14,6 +14,9 @@ export type Project = {
   color: string;
   model?: string;
   hero: string;
+  image?: string;
+  subtitle?: string;
+  sourcePages?: number[];
   facts: Array<{ label: string; value: string }>;
   sections: Array<{ eyebrow: string; title: string; body: string }>;
 };

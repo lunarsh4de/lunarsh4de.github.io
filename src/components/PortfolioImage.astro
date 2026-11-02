@@ -1,0 +1,11 @@
+---
+import media from '../data/portfolio-media.json';
+interface Props { src: string; alt: string; eager?: boolean; class?: string; }
+const {src, alt, eager = false, class: className} = Astro.props;
+const item = media.find((item) => item.src === src);
+if (!item) throw new Error(`Missing portfolio media: ${src}`);
+---
+<img class={className} src={src} alt={alt} width={item.width} height={item.height}
+  srcset={item.variants.map((v) => `${v.src} ${v.width}w`).join(', ')}
+  sizes="(max-width: 700px) calc(100vw - 36px), (max-width: 1100px) 70vw, 80vw"
+  loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" />

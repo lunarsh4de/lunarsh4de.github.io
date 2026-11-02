@@ -1,0 +1,1576 @@
+[
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "hero",
+    "page": 3,
+    "imageIndex": 11,
+    "xref": 462,
+    "width": 1024,
+    "height": 572,
+    "originalWidth": 1024,
+    "originalHeight": 572,
+    "src": "/images/projects/pipe-cleaning-robot/hero.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/hero-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/hero-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/hero.webp",
+        "width": 1024
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "sketches",
+    "page": 3,
+    "imageIndex": 4,
+    "xref": 430,
+    "width": 1692,
+    "height": 930,
+    "originalWidth": 1692,
+    "originalHeight": 930,
+    "src": "/images/projects/pipe-cleaning-robot/sketches.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/sketches-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/sketches-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/sketches.webp",
+        "width": 1692
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "motor-control",
+    "page": 3,
+    "imageIndex": 1,
+    "xref": 386,
+    "width": 1536,
+    "height": 685,
+    "originalWidth": 1536,
+    "originalHeight": 685,
+    "src": "/images/projects/pipe-cleaning-robot/motor-control.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/motor-control-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/motor-control-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/motor-control.webp",
+        "width": 1536
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "diameter-adaptation",
+    "page": 3,
+    "imageIndex": 3,
+    "xref": 422,
+    "width": 1362,
+    "height": 951,
+    "originalWidth": 1362,
+    "originalHeight": 951,
+    "src": "/images/projects/pipe-cleaning-robot/diameter-adaptation.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/diameter-adaptation-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/diameter-adaptation-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/diameter-adaptation.webp",
+        "width": 1362
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "sensing",
+    "page": 3,
+    "imageIndex": 5,
+    "xref": 434,
+    "width": 478,
+    "height": 299,
+    "originalWidth": 478,
+    "originalHeight": 299,
+    "src": "/images/projects/pipe-cleaning-robot/sensing.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/sensing.webp",
+        "width": 478
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "pipe-scan",
+    "page": 3,
+    "imageIndex": 9,
+    "xref": 446,
+    "width": 847,
+    "height": 633,
+    "originalWidth": 847,
+    "originalHeight": 633,
+    "src": "/images/projects/pipe-cleaning-robot/pipe-scan.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/pipe-scan-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/pipe-scan.webp",
+        "width": 847
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "pipe-fit",
+    "page": 3,
+    "imageIndex": 10,
+    "xref": 458,
+    "width": 581,
+    "height": 535,
+    "originalWidth": 581,
+    "originalHeight": 535,
+    "src": "/images/projects/pipe-cleaning-robot/pipe-fit.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/pipe-fit-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/pipe-fit.webp",
+        "width": 581
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "front-view",
+    "page": 3,
+    "imageIndex": 12,
+    "xref": 476,
+    "width": 487,
+    "height": 463,
+    "originalWidth": 487,
+    "originalHeight": 463,
+    "src": "/images/projects/pipe-cleaning-robot/front-view.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/front-view-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/front-view.webp",
+        "width": 487
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "chassis-details",
+    "page": 3,
+    "imageIndex": 2,
+    "xref": 418,
+    "width": 1318,
+    "height": 323,
+    "originalWidth": 1318,
+    "originalHeight": 323,
+    "src": "/images/projects/pipe-cleaning-robot/chassis-details.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/chassis-details-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/chassis-details-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/chassis-details.webp",
+        "width": 1318
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "rear-render",
+    "page": 3,
+    "imageIndex": 19,
+    "xref": 398,
+    "width": 1920,
+    "height": 1080,
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "src": "/images/projects/pipe-cleaning-robot/rear-render.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/rear-render-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/rear-render-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/rear-render.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "front-render",
+    "page": 3,
+    "imageIndex": 21,
+    "xref": 412,
+    "width": 1920,
+    "height": 1080,
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "src": "/images/projects/pipe-cleaning-robot/front-render.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/front-render-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/front-render-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/front-render.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "sensor-detail",
+    "page": 3,
+    "imageIndex": 22,
+    "xref": 406,
+    "width": 1920,
+    "height": 1080,
+    "originalWidth": 1920,
+    "originalHeight": 1080,
+    "src": "/images/projects/pipe-cleaning-robot/sensor-detail.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/sensor-detail-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/sensor-detail-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/sensor-detail.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "inspection",
+    "page": 3,
+    "imageIndex": 13,
+    "xref": 486,
+    "width": 410,
+    "height": 372,
+    "originalWidth": 410,
+    "originalHeight": 372,
+    "src": "/images/projects/pipe-cleaning-robot/inspection.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/inspection.webp",
+        "width": 410
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "assisted-cleaning",
+    "page": 3,
+    "imageIndex": 14,
+    "xref": 492,
+    "width": 721,
+    "height": 688,
+    "originalWidth": 721,
+    "originalHeight": 688,
+    "src": "/images/projects/pipe-cleaning-robot/assisted-cleaning.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/assisted-cleaning-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/assisted-cleaning.webp",
+        "width": 721
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "traditional-cleaning",
+    "page": 3,
+    "imageIndex": 15,
+    "xref": 496,
+    "width": 1076,
+    "height": 959,
+    "originalWidth": 1076,
+    "originalHeight": 959,
+    "src": "/images/projects/pipe-cleaning-robot/traditional-cleaning.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/traditional-cleaning-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/traditional-cleaning-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/pipe-cleaning-robot/traditional-cleaning.webp",
+        "width": 1076
+      }
+    ]
+  },
+  {
+    "slug": "pipe-cleaning-robot",
+    "name": "locating",
+    "page": 3,
+    "imageIndex": 16,
+    "xref": 500,
+    "width": 463,
+    "height": 489,
+    "originalWidth": 463,
+    "originalHeight": 489,
+    "src": "/images/projects/pipe-cleaning-robot/locating.webp",
+    "variants": [
+      {
+        "src": "/images/projects/pipe-cleaning-robot/locating.webp",
+        "width": 463
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "hero",
+    "page": 4,
+    "imageIndex": 16,
+    "xref": 244,
+    "width": 1920,
+    "height": 1151,
+    "originalWidth": 2803,
+    "originalHeight": 1680,
+    "src": "/images/projects/plant-ostomy/hero.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/hero-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/hero-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/hero.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "sketches",
+    "page": 4,
+    "imageIndex": 6,
+    "xref": 186,
+    "width": 1378,
+    "height": 1149,
+    "originalWidth": 1378,
+    "originalHeight": 1149,
+    "src": "/images/projects/plant-ostomy/sketches.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/sketches-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/sketches-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/sketches.webp",
+        "width": 1378
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "bag-study",
+    "page": 4,
+    "imageIndex": 5,
+    "xref": 176,
+    "width": 358,
+    "height": 423,
+    "originalWidth": 358,
+    "originalHeight": 423,
+    "src": "/images/projects/plant-ostomy/bag-study.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/bag-study.webp",
+        "width": 358
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "anatomy",
+    "page": 4,
+    "imageIndex": 1,
+    "xref": 160,
+    "width": 1536,
+    "height": 1024,
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "src": "/images/projects/plant-ostomy/anatomy.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/anatomy-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/anatomy-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/anatomy.webp",
+        "width": 1536
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "belt-render",
+    "page": 4,
+    "imageIndex": 9,
+    "xref": 210,
+    "width": 1732,
+    "height": 1808,
+    "originalWidth": 1732,
+    "originalHeight": 1808,
+    "src": "/images/projects/plant-ostomy/belt-render.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/belt-render-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/belt-render-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/belt-render.webp",
+        "width": 1732
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "back-render",
+    "page": 4,
+    "imageIndex": 12,
+    "xref": 222,
+    "width": 1251,
+    "height": 2108,
+    "originalWidth": 1251,
+    "originalHeight": 2108,
+    "src": "/images/projects/plant-ostomy/back-render.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/back-render-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/back-render-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/back-render.webp",
+        "width": 1251
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "front-render",
+    "page": 4,
+    "imageIndex": 13,
+    "xref": 226,
+    "width": 1071,
+    "height": 1841,
+    "originalWidth": 1071,
+    "originalHeight": 1841,
+    "src": "/images/projects/plant-ostomy/front-render.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/front-render-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/front-render-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/front-render.webp",
+        "width": 1071
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "quick-release",
+    "page": 4,
+    "imageIndex": 14,
+    "xref": 230,
+    "width": 1920,
+    "height": 772,
+    "originalWidth": 2990,
+    "originalHeight": 1202,
+    "src": "/images/projects/plant-ostomy/quick-release.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/quick-release-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/quick-release-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/quick-release.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "seal-detail",
+    "page": 4,
+    "imageIndex": 17,
+    "xref": 258,
+    "width": 1920,
+    "height": 683,
+    "originalWidth": 2917,
+    "originalHeight": 1037,
+    "src": "/images/projects/plant-ostomy/seal-detail.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/seal-detail-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/seal-detail-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/seal-detail.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "plant-form",
+    "page": 4,
+    "imageIndex": 18,
+    "xref": 264,
+    "width": 900,
+    "height": 1681,
+    "originalWidth": 900,
+    "originalHeight": 1681,
+    "src": "/images/projects/plant-ostomy/plant-form.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/plant-form-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/plant-form.webp",
+        "width": 900
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "care-routine",
+    "page": 4,
+    "imageIndex": 20,
+    "xref": 274,
+    "width": 1250,
+    "height": 844,
+    "originalWidth": 1250,
+    "originalHeight": 844,
+    "src": "/images/projects/plant-ostomy/care-routine.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/care-routine-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/care-routine-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/care-routine.webp",
+        "width": 1250
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "wearing-context",
+    "page": 4,
+    "imageIndex": 27,
+    "xref": 302,
+    "width": 1517,
+    "height": 1044,
+    "originalWidth": 1517,
+    "originalHeight": 1044,
+    "src": "/images/projects/plant-ostomy/wearing-context.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/wearing-context-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/wearing-context-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/wearing-context.webp",
+        "width": 1517
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "wearing-render",
+    "page": 4,
+    "imageIndex": 29,
+    "xref": 180,
+    "width": 944,
+    "height": 576,
+    "originalWidth": 944,
+    "originalHeight": 576,
+    "src": "/images/projects/plant-ostomy/wearing-render.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/wearing-render-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/wearing-render.webp",
+        "width": 944
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "growth-concept",
+    "page": 4,
+    "imageIndex": 32,
+    "xref": 204,
+    "width": 1920,
+    "height": 1232,
+    "originalWidth": 2389,
+    "originalHeight": 1533,
+    "src": "/images/projects/plant-ostomy/growth-concept.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/growth-concept-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/growth-concept-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/growth-concept.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "prototype-shape",
+    "page": 4,
+    "imageIndex": 4,
+    "xref": 172,
+    "width": 1080,
+    "height": 1920,
+    "originalWidth": 1080,
+    "originalHeight": 1920,
+    "src": "/images/projects/plant-ostomy/prototype-shape.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/prototype-shape-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-shape-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-shape.webp",
+        "width": 1080
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "prototype-ring",
+    "page": 4,
+    "imageIndex": 10,
+    "xref": 214,
+    "width": 1280,
+    "height": 1707,
+    "originalWidth": 1280,
+    "originalHeight": 1707,
+    "src": "/images/projects/plant-ostomy/prototype-ring.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/prototype-ring-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-ring-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-ring.webp",
+        "width": 1280
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "prototype-assembly",
+    "page": 4,
+    "imageIndex": 8,
+    "xref": 200,
+    "width": 1280,
+    "height": 1707,
+    "originalWidth": 1280,
+    "originalHeight": 1707,
+    "src": "/images/projects/plant-ostomy/prototype-assembly.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/prototype-assembly-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-assembly-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-assembly.webp",
+        "width": 1280
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "prototype-spray",
+    "page": 4,
+    "imageIndex": 2,
+    "xref": 164,
+    "width": 1920,
+    "height": 2560,
+    "originalWidth": 3024,
+    "originalHeight": 4032,
+    "src": "/images/projects/plant-ostomy/prototype-spray.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/prototype-spray-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-spray-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-spray.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "prototype-material",
+    "page": 4,
+    "imageIndex": 3,
+    "xref": 168,
+    "width": 1920,
+    "height": 1440,
+    "originalWidth": 4032,
+    "originalHeight": 3024,
+    "src": "/images/projects/plant-ostomy/prototype-material.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/prototype-material-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-material-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/prototype-material.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "wearing-sequence",
+    "page": 4,
+    "imageIndex": 30,
+    "xref": 250,
+    "width": 1536,
+    "height": 1024,
+    "originalWidth": 1536,
+    "originalHeight": 1024,
+    "src": "/images/projects/plant-ostomy/wearing-sequence.webp",
+    "variants": [
+      {
+        "src": "/images/projects/plant-ostomy/wearing-sequence-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/plant-ostomy/wearing-sequence-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/plant-ostomy/wearing-sequence.webp",
+        "width": 1536
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "hero",
+    "page": 5,
+    "imageIndex": 1,
+    "xref": 30,
+    "width": 1146,
+    "height": 768,
+    "originalWidth": 1146,
+    "originalHeight": 768,
+    "src": "/images/projects/home-energy-storage/hero.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/hero-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/hero-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/home-energy-storage/hero.webp",
+        "width": 1146
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "balcony-context",
+    "page": 5,
+    "imageIndex": 15,
+    "xref": 82,
+    "width": 1044,
+    "height": 537,
+    "originalWidth": 1044,
+    "originalHeight": 537,
+    "src": "/images/projects/home-energy-storage/balcony-context.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/balcony-context-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/balcony-context-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/home-energy-storage/balcony-context.webp",
+        "width": 1044
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "home-scenario",
+    "page": 5,
+    "imageIndex": 9,
+    "xref": 58,
+    "width": 900,
+    "height": 500,
+    "originalWidth": 900,
+    "originalHeight": 500,
+    "src": "/images/projects/home-energy-storage/home-scenario.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/home-scenario-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/home-scenario.webp",
+        "width": 900
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "style-references",
+    "page": 5,
+    "imageIndex": 28,
+    "xref": 90,
+    "width": 1748,
+    "height": 847,
+    "originalWidth": 1748,
+    "originalHeight": 847,
+    "src": "/images/projects/home-energy-storage/style-references.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/style-references-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/style-references-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/home-energy-storage/style-references.webp",
+        "width": 1748
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-exploration",
+    "page": 5,
+    "imageIndex": 29,
+    "xref": 96,
+    "width": 1041,
+    "height": 757,
+    "originalWidth": 1041,
+    "originalHeight": 757,
+    "src": "/images/projects/home-energy-storage/ai-exploration.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-exploration-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/ai-exploration-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/home-energy-storage/ai-exploration.webp",
+        "width": 1041
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "form-sketches",
+    "page": 5,
+    "imageIndex": 11,
+    "xref": 66,
+    "width": 976,
+    "height": 714,
+    "originalWidth": 976,
+    "originalHeight": 714,
+    "src": "/images/projects/home-energy-storage/form-sketches.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/form-sketches-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/form-sketches-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/home-energy-storage/form-sketches.webp",
+        "width": 976
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "system-sketches",
+    "page": 5,
+    "imageIndex": 17,
+    "xref": 102,
+    "width": 1164,
+    "height": 877,
+    "originalWidth": 1164,
+    "originalHeight": 877,
+    "src": "/images/projects/home-energy-storage/system-sketches.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/system-sketches-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/system-sketches-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/home-energy-storage/system-sketches.webp",
+        "width": 1164
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "layout-sketches",
+    "page": 5,
+    "imageIndex": 18,
+    "xref": 108,
+    "width": 693,
+    "height": 543,
+    "originalWidth": 693,
+    "originalHeight": 543,
+    "src": "/images/projects/home-energy-storage/layout-sketches.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/layout-sketches-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/layout-sketches.webp",
+        "width": 693
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "stack-sketch",
+    "page": 5,
+    "imageIndex": 10,
+    "xref": 62,
+    "width": 341,
+    "height": 438,
+    "originalWidth": 341,
+    "originalHeight": 438,
+    "src": "/images/projects/home-energy-storage/stack-sketch.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/stack-sketch.webp",
+        "width": 341
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "form-study-1",
+    "page": 5,
+    "imageIndex": 14,
+    "xref": 78,
+    "width": 646,
+    "height": 428,
+    "originalWidth": 646,
+    "originalHeight": 428,
+    "src": "/images/projects/home-energy-storage/form-study-1.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/form-study-1-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/form-study-1.webp",
+        "width": 646
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "form-study-2",
+    "page": 5,
+    "imageIndex": 2,
+    "xref": 54,
+    "width": 542,
+    "height": 429,
+    "originalWidth": 542,
+    "originalHeight": 429,
+    "src": "/images/projects/home-energy-storage/form-study-2.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/form-study-2-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/form-study-2.webp",
+        "width": 542
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "form-study-3",
+    "page": 5,
+    "imageIndex": 8,
+    "xref": 50,
+    "width": 652,
+    "height": 538,
+    "originalWidth": 652,
+    "originalHeight": 538,
+    "src": "/images/projects/home-energy-storage/form-study-3.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/form-study-3-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/form-study-3.webp",
+        "width": 652
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "family-lineup",
+    "page": 5,
+    "imageIndex": 7,
+    "xref": 46,
+    "width": 1920,
+    "height": 641,
+    "originalWidth": 1920,
+    "originalHeight": 641,
+    "src": "/images/projects/home-energy-storage/family-lineup.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/family-lineup-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/family-lineup-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/home-energy-storage/family-lineup.webp",
+        "width": 1920
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "series-poster",
+    "page": 5,
+    "imageIndex": 4,
+    "xref": 42,
+    "width": 767,
+    "height": 1085,
+    "originalWidth": 767,
+    "originalHeight": 1085,
+    "src": "/images/projects/home-energy-storage/series-poster.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/series-poster-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/series-poster.webp",
+        "width": 767
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "family-poster",
+    "page": 5,
+    "imageIndex": 6,
+    "xref": 38,
+    "width": 764,
+    "height": 1080,
+    "originalWidth": 764,
+    "originalHeight": 1080,
+    "src": "/images/projects/home-energy-storage/family-poster.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/family-poster-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/family-poster.webp",
+        "width": 764
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-balcony",
+    "page": 5,
+    "imageIndex": 19,
+    "xref": 112,
+    "width": 798,
+    "height": 816,
+    "originalWidth": 798,
+    "originalHeight": 816,
+    "src": "/images/projects/home-energy-storage/ai-balcony.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-balcony-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/ai-balcony.webp",
+        "width": 798
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-system",
+    "page": 5,
+    "imageIndex": 20,
+    "xref": 122,
+    "width": 433,
+    "height": 406,
+    "originalWidth": 433,
+    "originalHeight": 406,
+    "src": "/images/projects/home-energy-storage/ai-system.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-system.webp",
+        "width": 433
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-storage",
+    "page": 5,
+    "imageIndex": 21,
+    "xref": 126,
+    "width": 412,
+    "height": 406,
+    "originalWidth": 412,
+    "originalHeight": 406,
+    "src": "/images/projects/home-energy-storage/ai-storage.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-storage.webp",
+        "width": 412
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-home",
+    "page": 5,
+    "imageIndex": 22,
+    "xref": 130,
+    "width": 774,
+    "height": 773,
+    "originalWidth": 774,
+    "originalHeight": 773,
+    "src": "/images/projects/home-energy-storage/ai-home.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-home-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/ai-home.webp",
+        "width": 774
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-range",
+    "page": 5,
+    "imageIndex": 23,
+    "xref": 134,
+    "width": 873,
+    "height": 832,
+    "originalWidth": 873,
+    "originalHeight": 832,
+    "src": "/images/projects/home-energy-storage/ai-range.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-range-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/ai-range.webp",
+        "width": 873
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-section",
+    "page": 5,
+    "imageIndex": 24,
+    "xref": 138,
+    "width": 396,
+    "height": 406,
+    "originalWidth": 396,
+    "originalHeight": 406,
+    "src": "/images/projects/home-energy-storage/ai-section.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-section.webp",
+        "width": 396
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-front",
+    "page": 5,
+    "imageIndex": 25,
+    "xref": 142,
+    "width": 406,
+    "height": 406,
+    "originalWidth": 406,
+    "originalHeight": 406,
+    "src": "/images/projects/home-energy-storage/ai-front.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-front.webp",
+        "width": 406
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-cabinet",
+    "page": 5,
+    "imageIndex": 26,
+    "xref": 146,
+    "width": 756,
+    "height": 751,
+    "originalWidth": 756,
+    "originalHeight": 751,
+    "src": "/images/projects/home-energy-storage/ai-cabinet.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-cabinet-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/ai-cabinet.webp",
+        "width": 756
+      }
+    ]
+  },
+  {
+    "slug": "home-energy-storage",
+    "name": "ai-series",
+    "page": 5,
+    "imageIndex": 27,
+    "xref": 150,
+    "width": 835,
+    "height": 831,
+    "originalWidth": 835,
+    "originalHeight": 831,
+    "src": "/images/projects/home-energy-storage/ai-series.webp",
+    "variants": [
+      {
+        "src": "/images/projects/home-energy-storage/ai-series-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/home-energy-storage/ai-series.webp",
+        "width": 835
+      }
+    ]
+  },
+  {
+    "slug": "parametric-objects",
+    "name": "hero",
+    "page": 6,
+    "imageIndex": 5,
+    "xref": 348,
+    "width": 1066,
+    "height": 996,
+    "originalWidth": 1066,
+    "originalHeight": 996,
+    "src": "/images/projects/parametric-objects/hero.webp",
+    "variants": [
+      {
+        "src": "/images/projects/parametric-objects/hero-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/parametric-objects/hero-960.webp",
+        "width": 960
+      },
+      {
+        "src": "/images/projects/parametric-objects/hero.webp",
+        "width": 1066
+      }
+    ]
+  },
+  {
+    "slug": "parametric-objects",
+    "name": "branch-form",
+    "page": 6,
+    "imageIndex": 3,
+    "xref": 340,
+    "width": 621,
+    "height": 635,
+    "originalWidth": 621,
+    "originalHeight": 635,
+    "src": "/images/projects/parametric-objects/branch-form.webp",
+    "variants": [
+      {
+        "src": "/images/projects/parametric-objects/branch-form-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/parametric-objects/branch-form.webp",
+        "width": 621
+      }
+    ]
+  },
+  {
+    "slug": "parametric-objects",
+    "name": "printed-branch",
+    "page": 6,
+    "imageIndex": 1,
+    "xref": 332,
+    "width": 565,
+    "height": 392,
+    "originalWidth": 565,
+    "originalHeight": 392,
+    "src": "/images/projects/parametric-objects/printed-branch.webp",
+    "variants": [
+      {
+        "src": "/images/projects/parametric-objects/printed-branch-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/parametric-objects/printed-branch.webp",
+        "width": 565
+      }
+    ]
+  },
+  {
+    "slug": "parametric-objects",
+    "name": "printed-holder",
+    "page": 6,
+    "imageIndex": 4,
+    "xref": 344,
+    "width": 565,
+    "height": 392,
+    "originalWidth": 565,
+    "originalHeight": 392,
+    "src": "/images/projects/parametric-objects/printed-holder.webp",
+    "variants": [
+      {
+        "src": "/images/projects/parametric-objects/printed-holder-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/parametric-objects/printed-holder.webp",
+        "width": 565
+      }
+    ]
+  },
+  {
+    "slug": "parametric-objects",
+    "name": "printed-knot",
+    "page": 6,
+    "imageIndex": 2,
+    "xref": 336,
+    "width": 623,
+    "height": 783,
+    "originalWidth": 623,
+    "originalHeight": 783,
+    "src": "/images/projects/parametric-objects/printed-knot.webp",
+    "variants": [
+      {
+        "src": "/images/projects/parametric-objects/printed-knot-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/parametric-objects/printed-knot.webp",
+        "width": 623
+      }
+    ]
+  },
+  {
+    "slug": "youth-farm",
+    "name": "home-screen",
+    "page": 7,
+    "imageIndex": 3,
+    "xref": 16,
+    "width": 816,
+    "height": 1518,
+    "originalWidth": 816,
+    "originalHeight": 1518,
+    "src": "/images/projects/youth-farm/home-screen.webp",
+    "variants": [
+      {
+        "src": "/images/projects/youth-farm/home-screen-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/youth-farm/home-screen.webp",
+        "width": 816
+      }
+    ]
+  },
+  {
+    "slug": "youth-farm",
+    "name": "activity-screen",
+    "page": 7,
+    "imageIndex": 1,
+    "xref": 8,
+    "width": 807,
+    "height": 1101,
+    "originalWidth": 807,
+    "originalHeight": 1101,
+    "src": "/images/projects/youth-farm/activity-screen.webp",
+    "variants": [
+      {
+        "src": "/images/projects/youth-farm/activity-screen-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/projects/youth-farm/activity-screen.webp",
+        "width": 807
+      }
+    ]
+  }
+]

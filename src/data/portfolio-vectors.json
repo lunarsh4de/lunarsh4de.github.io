@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "plant-ostomy",
+    "name": "adjustable-opening",
+    "page": 4,
+    "box": [
+      960,
+      3590,
+      1280,
+      3900
+    ],
+    "format": "svg",
+    "width": 320,
+    "height": 310,
+    "src": "/images/projects/plant-ostomy/adjustable-opening.svg",
+    "variants": []
+  },
+  {
+    "slug": "plant-ostomy",
+    "name": "anti-reflux",
+    "page": 4,
+    "box": [
+      680,
+      4100,
+      1050,
+      4620
+    ],
+    "format": "svg",
+    "width": 370,
+    "height": 520,
+    "src": "/images/projects/plant-ostomy/anti-reflux.svg",
+    "variants": []
+  }
+]

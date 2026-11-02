@@ -8,27 +8,32 @@ import { ClientRouter } from 'astro:transitions';
 interface Props {
   title?: string;
   description?: string;
+  contentLang?: string;
+  socialImage?: string;
 }
 
-const { title = site.name, description = site.statement } = Astro.props;
+const { title = site.name, description = site.statement, contentLang, socialImage } = Astro.props;
 const isHome = Astro.url.pathname === '/';
 const isPanel = !isHome;
 const isNotes = Astro.url.pathname.startsWith('/notes');
 const isWork = Astro.url.pathname.startsWith('/work');
 ---
 <!doctype html>
-<html lang="en">
+<html lang={contentLang ?? 'en'} data-content-lang={contentLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:title" content={`${title} — Zichen Yang`} />
+    <meta property="og:description" content={description} />
+    {socialImage && <meta property="og:image" content={new URL(socialImage, Astro.site)} />}
     <ClientRouter />
     <title>{title} — Product development</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
-    <script type="module" src="https://unpkg.com/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
   </head>
   <body class:list={[isHome && 'is-reference-home', isPanel && 'is-panel-page']}>
     <div class="cursor-dot" aria-hidden="true"></div>
@@ -70,7 +75,7 @@ const isWork = Astro.url.pathname.startsWith('/work');
           if (!switches.length && !labels.length) return;
           const stored = window.localStorage.getItem('lin-language');
           const language = stored === 'cn' ? 'cn' : 'en';
-          document.documentElement.lang = language === 'cn' ? 'zh-CN' : 'en';
+          document.documentElement.lang = document.documentElement.dataset.contentLang || (language === 'cn' ? 'zh-CN' : 'en');
           labels.forEach((label) => {
             const value = label.dataset[language];
             if (value) label.innerHTML = value;

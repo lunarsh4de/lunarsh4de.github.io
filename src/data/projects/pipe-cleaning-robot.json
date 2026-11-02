@@ -1,0 +1,19 @@
+{
+  "slug": "pipe-cleaning-robot",
+  "title": "管道清理者",
+  "subtitle": "Pipe-cleaning robot",
+  "category": "机器人 / 产品设计",
+  "year": "作品集 2020–2026",
+  "short": "面向城市排水管道的清淤机器人概念。",
+  "intro": "从人工清淤的作业流程出发，将管道识别、机械清理与高压冲洗整合进紧凑底盘，探索更便于检查与维护的城市排水作业设备。",
+  "color": "#dce8ed",
+  "hero": "城市下水道清淤机器人",
+  "image": "/images/projects/pipe-cleaning-robot/hero.webp",
+  "sourcePages": [3],
+  "facts": [
+    {"label": "项目内容", "value": "场景研究 · 造型与结构探索 · 驱动方案"},
+    {"label": "作品记录", "value": "中国—东盟工业设计大赛入围奖"},
+    {"label": "设计阶段", "value": "产品概念 / 工程能力待样机验证"}
+  ],
+  "sections": []
+}
