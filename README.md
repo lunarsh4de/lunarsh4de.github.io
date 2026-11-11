@@ -44,4 +44,4 @@ npm run verify:portfolio
 
 详见 `docs/PORTFOLIO-IMPORT.md`，其中记录 PDF 页与作品的对应关系、提取方法、文案处理与后续编辑方式。
 
-公众号同步见 [docs/WECHAT-SYNC.md](docs/WECHAT-SYNC.md)。本地使用 `npm run sync:wechat` 读取已发表文章；公开文章索引为 `/api/articles.json`。持续自动同步需配置公众号白名单、API 权限、凭据及固定出站 IP 的运行环境，默认关闭。
+公众号内容通过公开链接读取，流程见 [docs/WECHAT-SYNC.md](docs/WECHAT-SYNC.md)。无需 Markdown 稿件或插件；读取原文后使用 `npm run sync:wechat -- --capture-dir tmp/wechat-captures` 导入。当前归档“热点资讯”合集的 16 篇公开文章，5 篇作者设为私密的文章未导入；不代表账号全部历史内容。公开索引为 `/api/articles.json`，来源覆盖记录为 `/api/wechat-source.json`。未开启后台自动抓取。

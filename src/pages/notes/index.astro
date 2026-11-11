@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { articles, wechat, publicationDate } from '../../data/wechat';
+import { articles, wechat, wechatSource, publicationDate } from '../../data/wechat';
 import '../../styles/wechat.css';
 ---
 <BaseLayout title={`${wechat.accountName} · 博客`} description="来自公众号「设计有AI」的文章，关于 AI、工具与设计实践。" contentLang="zh-CN">
   <section class="wechat-head section-pad">
     <p class="eyebrow"><span class="eyebrow-mark"></span>Blog / WeChat journal</p>
-    <div class="wechat-heading"><h1>设计有<span>AI</span><span class="wechat-heading-dot">.</span></h1><p>关于 AI、工具与设计实践的记录。<br />来自我的同名微信公众号。</p></div>
-    <div class="wechat-archive-meta"><span class="mono">{String(articles.length).padStart(2, '0')} 篇文章</span><a class="arrow-link" href={wechat.accountArticleUrl} target="_blank" rel="noopener noreferrer">前往微信公众号 <span aria-hidden="true">↗</span></a></div>
+    <div class="wechat-heading"><h1>设计有<span>AI</span><span class="wechat-heading-dot">.</span></h1><p>用设计理解 AI，用 AI 重新设计日常。<br />记录 AI 设计工具、灵感案例与未来生活方式。</p></div>
+    <div class="wechat-archive-meta"><span class="mono">{String(articles.length).padStart(2, '0')} 篇文章 · {wechatSource.collectionName}</span><a class="arrow-link" href={wechat.accountArticleUrl} target="_blank" rel="noopener noreferrer">前往微信公众号 <span aria-hidden="true">↗</span></a></div>
   </section>
   <section class="wechat-archive section-pad" aria-label="公众号文章">
     {articles.map((article, index) => <a class="wechat-article-card" href={`/notes/${article.slug}/`}>

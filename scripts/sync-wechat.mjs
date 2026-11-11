@@ -1,10 +1,11 @@
-import { readFile, writeFile, mkdir, rename } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rename, readdir } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { parseFragment, serialize } from 'parse5';
 import sharp from 'sharp';
 import { articleUrl, articleSlug, cleanArticleHtml, imageUrl, plainText, validateArticle } from './wechat-content.mjs';
+import { captureToArticle } from './wechat-capture.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolve(root, 'src/data/wechat.json');
@@ -94,10 +95,17 @@ async function prepareArticle(article, mediaRoot) {
   };
 }
 
-export async function syncWechat({ configPath, importPath, dataPath = output, mediaRoot = resolve(root, 'public/images/wechat') } = {}) {
+export async function syncWechat({ configPath, importPath, captureDir, dataPath = output, mediaRoot = resolve(root, 'public/images/wechat') } = {}) {
   const previous = JSON.parse(await readFile(dataPath, 'utf8'));
   let incoming = [];
-  if (importPath) {
+  if (captureDir) {
+    const files = (await readdir(captureDir)).filter(name => name.endsWith('.json')).sort();
+    if (!files.length) throw new Error('No public article captures were found.');
+    for (const name of files) {
+      const capture = JSON.parse(await readFile(resolve(captureDir, name), 'utf8'));
+      incoming.push(captureToArticle(capture, previous));
+    }
+  } else if (importPath) {
     const imported = JSON.parse(await readFile(importPath, 'utf8'));
     incoming = Array.isArray(imported) ? imported : imported.articles;
     if (!Array.isArray(incoming) || !incoming.length) throw new Error('Import contains no articles.');
@@ -141,8 +149,10 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const args = process.argv.slice(2);
   const configAt = args.indexOf('--config');
   const importAt = args.indexOf('--import');
-  if ((configAt >= 0 && !args[configAt+1]) || (importAt >= 0 && !args[importAt+1])) throw new Error('Missing command argument.');
-  syncWechat({ configPath: configAt < 0 ? undefined : args[configAt+1], importPath: importAt < 0 ? undefined : args[importAt+1] }).catch((error) => {
+  const captureAt = args.indexOf('--capture-dir');
+  if ([configAt,importAt,captureAt].some(index => index >= 0 && (!args[index+1] || args[index+1].startsWith('--')))) throw new Error('Missing command argument.');
+  if ([configAt,importAt,captureAt].filter(index=>index>=0).length > 1) throw new Error('Choose one source: --config, --import or --capture-dir.');
+  syncWechat({ configPath: configAt < 0 ? undefined : args[configAt+1], importPath: importAt < 0 ? undefined : args[importAt+1], captureDir: captureAt < 0 ? undefined : args[captureAt+1] }).catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "method": "public-article-links",
+  "accountName": "设计有AI",
+  "accountDescription": "Design+Ai 用设计理解 AI，用 AI 重新设计日常。记录 AI 设计工具、灵感案例、审美观察与未来生活方式。",
+  "seedUrl": "https://mp.weixin.qq.com/s/wgHtx_s28HNVIY97BBdt3Q",
+  "collectionName": "热点资讯",
+  "checkedOn": "2026-11-11",
+  "discoveredCount": 21,
+  "importedCount": 16,
+  "unavailableCount": 5,
+  "coverage": "从公开合集目录发现的文章，不代表账号全部历史内容。",
+  "automaticSync": false,
+  "articles": [
+    {
+      "title": "GPT-6 Astra来了！有哪些新玩意可以做？来看看这些案例",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488624&sn=7aa4d642aa612ee65ffa4b8880ea1808",
+      "path": "/notes/wechat-627c0f950567c569/",
+      "publishedAt": "2026-09-05T18:14:00+08:00"
+    },
+    {
+      "title": "DeepSeek Harness来了，20小时突破7.7万Star？真有这么夸张？",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488619&sn=3d181ff207909226ccc0c180152a422a",
+      "path": "/notes/wechat-cafa004627b9380c/",
+      "publishedAt": "2026-08-15T08:00:00+08:00"
+    },
+    {
+      "title": "爆火项目！4天1.1万 Star，anydoc 3.35秒364页PDF转成Markdown",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=2&mid=2247488619&sn=67d5436b38b51ceb3b557afaec81e2bd",
+      "path": "/notes/wechat-faf688592261a428/",
+      "publishedAt": "2026-08-15T08:00:00+08:00"
+    },
+    {
+      "title": "GitHub 本周新增 1.9k Star！这个开源看板，AI 也能直接改任务",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=2&mid=2247488613&sn=ff1a048d64e73af5d008f44df7f1b4b0",
+      "path": "/notes/wechat-6e7417edecbfd841/",
+      "publishedAt": "2026-08-11T20:59:00+08:00"
+    },
+    {
+      "title": "Codex 写到一半，能把会话搬去另一个 Agent？7.27 新锐项目清单",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488564&sn=34a9a52429c6ba6084a920173077f2ac",
+      "path": "/notes/wechat-3291a4d97cb1f816/",
+      "publishedAt": "2026-07-28T15:26:00+08:00"
+    },
+    {
+      "title": "Codex 也能自己看页面找问题？7.25 新项目关注指南",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488554&sn=75e31d9a0e77fbedd38200e6739307d4",
+      "path": "/notes/wechat-0c5100fa26ad5404/",
+      "publishedAt": "2026-07-26T16:04:00+08:00"
+    },
+    {
+      "title": "豆包、千问的“AI对象”为什么没了？",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488537&sn=64eb4acd6c23d893b98fb8d01f9e5a00",
+      "path": "/notes/wechat-712e20df25aeea9a/",
+      "publishedAt": "2026-07-24T14:15:00+08:00"
+    },
+    {
+      "title": "新热点：本周 GitHub 热门 Codex 项目 Top10（codex皮肤的生成与安装的新skill出现）",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488500&sn=d43e96a365244f060ec090f45cc235ee",
+      "path": "/notes/wechat-af3292ad343cbd51/",
+      "publishedAt": "2026-07-17T23:14:00+08:00"
+    },
+    {
+      "title": "今日GitHub热门Codex项目Top5，热门项目推荐（26.07.09）",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=2&mid=2247488471&sn=f78c3556a9650db5a62326551ae3f343",
+      "path": "/notes/wechat-d3533d2db616a63c/",
+      "publishedAt": "2026-07-09T14:58:00+08:00"
+    },
+    {
+      "title": "今日 GitHub 热门 Codex 项目 Top5（26.07.07）",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=2&mid=2247488448&sn=93bd7d0fb21bd5c003e6a128d5dfe61c",
+      "path": "/notes/wechat-4fbbc7f666199c5c/",
+      "publishedAt": "2026-07-07T17:29:00+08:00"
+    },
+    {
+      "title": "本周 GitHub 热门 Codex 项目 Top10（06.27-07.03）",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488438&sn=1f5de8983fc1cf6611e7736d227a1b92",
+      "path": "/notes/wechat-7c11f4981b7e57d2/",
+      "publishedAt": "2026-07-03T11:49:00+08:00"
+    },
+    {
+      "title": "本周 GitHub 热门 Codex 相关项目 Top10",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488406&sn=befd718fbe4697d2bcece50c1c6695fc",
+      "path": "/notes/wechat-65b78bf74bf3b2eb/",
+      "publishedAt": "2026-06-29T16:47:00+08:00"
+    },
+    {
+      "title": "Codex 暴雷？SSD被写废？是真的吗？怎么止血？",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488349&sn=01d1be18621bd5595001dded82de05ac",
+      "path": "/notes/codex-ssd-log-writes/",
+      "publishedAt": "2026-06-23T08:30:00+08:00"
+    },
+    {
+      "title": "端午节期间，你错过的 GitHub AI 新项目 Top10",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488338&sn=9b2b4c8d2e075ff330e8de83a2dc8b73",
+      "path": "/notes/wechat-71392c7ba22109b7/",
+      "publishedAt": "2026-06-22T15:30:00+08:00"
+    },
+    {
+      "title": "GitHub本周Codex 热门项目Top10(截至26.06.18)",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488323&sn=315bfd71ff9e8b38b2c8d2feded390b3",
+      "path": "/notes/wechat-c89d208dd0ad3307/",
+      "publishedAt": "2026-06-18T12:10:00+08:00"
+    },
+    {
+      "title": "本周GitHub上最火的10个Codex相关项目（截止2026.06.12）",
+      "sourceUrl": "https://mp.weixin.qq.com/s?__biz=MzkyNzIzMDQ2MA%3D%3D&idx=1&mid=2247488219&sn=6f84a1cb29f0054f936ad1f60d0997ff",
+      "path": "/notes/wechat-0875a5348610c848/",
+      "publishedAt": "2026-06-12T18:17:00+08:00"
+    }
+  ]
+}

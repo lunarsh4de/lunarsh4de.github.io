@@ -1,7 +1,9 @@
 import archive from './wechat.json';
+import publicSource from './wechat-source.json';
 import { cleanArticleHtml, validateArticle } from '../../scripts/wechat-content.mjs';
 
 export const wechat = archive;
+export const wechatSource = publicSource;
 export const articles = archive.articles.map((article) => {
   validateArticle(article);
   return { ...article, contentHtml: cleanArticleHtml(article.contentHtml) };

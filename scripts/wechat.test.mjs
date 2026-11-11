@@ -6,6 +6,18 @@ import { join } from 'node:path';
 import sharp from 'sharp';
 import { articleUrl, cleanArticleHtml } from './wechat-content.mjs';
 import { syncWechat } from './sync-wechat.mjs';
+import { captureToArticle } from './wechat-capture.mjs';
+
+test('public article captures verify account/date and reuse the original short-link route', () => {
+  const previous = { accountName:'设计有AI', articles:[{slug:'existing-route',title:'同一篇文章',sourceUrl:'https://mp.weixin.qq.com/s/short',publishedAt:'2026-06-23T08:30:00+08:00'}] };
+  const capture = { account:'设计有AI',title:'同一篇文章',author:'作者',publishedLabel:'2026年6月23日 08:30',sourceUrl:'https://mp.weixin.qq.com/s?__biz=abc&mid=123&idx=1&sn=test',contentHtml:'<p>真实正文</p>' };
+  assert.equal(captureToArticle(capture,previous).slug,'existing-route');
+  assert.equal(captureToArticle(capture,previous).publishedAt,'2026-06-23T08:30:00+08:00');
+  assert.throws(()=>captureToArticle({...capture,account:'其他公众号'},previous),/different account/);
+  assert.throws(()=>captureToArticle({...capture,publishedLabel:'2026年2月30日 08:30'},previous),/Invalid/);
+  assert.throws(()=>captureToArticle({...capture,publishedLabel:''},previous),/publication date/);
+  assert.throws(()=>captureToArticle({...capture,contentHtml:''},previous),/unavailable/);
+});
 
 test('untrusted HTML is stripped while article formatting and lazy images survive', () => {
   const safe = cleanArticleHtml('<h1>T</h1><script>alert(1)</script><iframe src="https://evil.test"></iframe><p style="width:9000px" onclick="evil()">正文</p><a href="javascript:evil()">x</a><img data-src="https://mmbiz.qpic.cn/a.png" src="data:bad" onerror="evil()"><img src="https://evil.test/track">');
