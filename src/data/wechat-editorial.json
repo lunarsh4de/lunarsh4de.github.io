@@ -1,0 +1,82 @@
+{
+  "wechat-627c0f950567c569": {
+    "title": "What can GPT-6 Astra make? Eight public examples",
+    "excerpt": "Cover artwork, house models, a dress-up game and a pixel speaker controller: eight public examples, including the details that did not work out.",
+    "coverLines": ["GPT-6", "Astra"], "topic": "Creative experiments", "motif": "orbit", "color": "#e3e9df"
+  },
+  "wechat-cafa004627b9380c": {
+    "title": "DeepSeek Harness: what is behind the attention?",
+    "excerpt": "A look at the developer preview released on August 13: its plugin approach to models, tools, sessions and agent loops, and whether it is ready for everyday use.",
+    "coverLines": ["DeepSeek", "Harness"], "topic": "Agent infrastructure", "motif": "nodes", "color": "#dfe8ed"
+  },
+  "wechat-faf688592261a428": {
+    "title": "anydoc: turning a 364-page PDF into searchable Markdown",
+    "excerpt": "A test with a Chinese prospectus recorded a 3.35-second conversion after caching. Six spot checks examine how well the output supports finding and verifying figures.",
+    "coverLines": ["PDF to", "Markdown"], "topic": "anydoc / Document tools", "motif": "pages", "color": "#ece5d9"
+  },
+  "wechat-6e7417edecbfd841": {
+    "title": "Kaneo: a task board that AI agents can update",
+    "excerpt": "Kanban, a backlog, two-way GitHub sync and MCP in one self-hosted tool. A look at the workflow and the maintenance that comes with running it yourself.",
+    "coverLines": ["Kaneo", "Task boards"], "topic": "Project management", "motif": "board", "color": "#e3e9df"
+  },
+  "wechat-3291a4d97cb1f816": {
+    "title": "Moving a Codex session between agents: July 27 project picks",
+    "excerpt": "New projects connecting agent sessions, verifiable skills, product design and browser terminals, selected on July 27.",
+    "coverLines": ["Agent", "handoffs"], "topic": "Codex picks / July 27", "motif": "nodes", "color": "#dfe8ed"
+  },
+  "wechat-0c5100fa26ad5404": {
+    "title": "Can Codex inspect a page itself? July 25 project picks",
+    "excerpt": "Ten emerging projects exploring visual page inspection, usage tracking and session management around Codex.",
+    "coverLines": ["Browser", "inspection"], "topic": "Codex picks / July 25", "motif": "board", "color": "#ece5d9"
+  },
+  "wechat-712e20df25aeea9a": {
+    "title": "Why did Doubao and Qianwen remove their AI companions?",
+    "excerpt": "Both services withdrew agent features on July 15, citing product changes. The article examines the timing alongside new rules, moderation costs and product trade-offs.",
+    "coverLines": ["AI", "companions"], "topic": "Product decisions", "motif": "orbit", "color": "#e9dfe3"
+  },
+  "wechat-af3292ad343cbd51": {
+    "title": "Ten Codex projects to watch, from memory to desktop skins",
+    "excerpt": "A weekly selection of new or fast-growing repositories covering memory, model routing, desktop customisation and media creation.",
+    "coverLines": ["Codex", "ecosystem"], "topic": "Weekly picks / July 17", "motif": "nodes", "color": "#e3e9df"
+  },
+  "wechat-d3533d2db616a63c": {
+    "title": "Five Codex repositories to explore: July 9, 2026",
+    "excerpt": "Five popular projects selected from active GitHub repositories tagged with Codex, with captured project introductions for context.",
+    "coverLines": ["Codex", "project picks"], "topic": "Daily selection / July 9", "motif": "pages", "color": "#dfe8ed"
+  },
+  "wechat-4fbbc7f666199c5c": {
+    "title": "Five new Codex repositories: July 7, 2026",
+    "excerpt": "A focused selection of Codex-related repositories created on July 7, 2026.",
+    "coverLines": ["Codex", "new arrivals"], "topic": "Daily selection / July 7", "motif": "pages", "color": "#ece5d9"
+  },
+  "wechat-7c11f4981b7e57d2": {
+    "title": "Ten Codex projects from June 27 to July 3",
+    "excerpt": "A week of new repositories focused on configuration, skills, usage dashboards, remote development and team workflows.",
+    "coverLines": ["Codex", "workflows"], "topic": "Weekly picks / June 27–July 3", "motif": "board", "color": "#e3e9df"
+  },
+  "wechat-65b78bf74bf3b2eb": {
+    "title": "Ten new Codex projects worth catching up on",
+    "excerpt": "A weekly reading list of ten notable Codex-related projects, limited to repositories created that week.",
+    "coverLines": ["Codex", "reading list"], "topic": "Weekly picks / June 29", "motif": "pages", "color": "#e9dfe3"
+  },
+  "codex-ssd-log-writes": {
+    "title": "Codex log writes and SSD wear: what the reports show",
+    "excerpt": "Public issues and user screenshots help trace excessive log writes, the affected setups and temporary mitigations. The most extreme reports do not all concern the official upstream project.",
+    "coverLines": ["Logs &", "SSD wear"], "topic": "Codex / Issue review", "motif": "board", "color": "#ece5d9"
+  },
+  "wechat-71392c7ba22109b7": {
+    "title": "Ten AI projects you may have missed over the holiday",
+    "excerpt": "A catch-up list of new GitHub AI projects from the three-day Dragon Boat Festival holiday.",
+    "coverLines": ["AI project", "roundup"], "topic": "Holiday picks / June 22", "motif": "orbit", "color": "#dfe8ed"
+  },
+  "wechat-c89d208dd0ad3307": {
+    "title": "Ten new Codex projects: the week ending June 18",
+    "excerpt": "New repositories with Codex in their name or description, ranked by stars at the time of writing, with three observations about the ecosystem.",
+    "coverLines": ["Codex", "weekly picks"], "topic": "Week ending June 18", "motif": "nodes", "color": "#e9dfe3"
+  },
+  "wechat-0875a5348610c848": {
+    "title": "Ten Codex projects moving beyond code generation",
+    "excerpt": "A June 12 snapshot of popular Codex-related projects on GitHub and their shift towards broader development workflows.",
+    "coverLines": ["Beyond", "code generation"], "topic": "Codex picks / June 12", "motif": "orbit", "color": "#e3e9df"
+  }
+}
