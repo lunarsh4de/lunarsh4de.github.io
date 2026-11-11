@@ -6,6 +6,8 @@ const origin = process.env.PORTFOLIO_PREVIEW_URL || 'http://127.0.0.1:4331';
 const output = 'output/qa/portfolio';
 await mkdir(output, {recursive:true});
 const projects = await Promise.all((await readdir('src/data/projects')).map(async (file) => JSON.parse(await readFile(`src/data/projects/${file}`, 'utf8'))));
+const wechat = JSON.parse(await readFile('src/data/wechat.json', 'utf8'));
+const articleRoutes = wechat.articles.map((article) => `/notes/${article.slug}/`);
 let executablePath = process.env.PORTFOLIO_CHROMIUM || chromium.executablePath();
 if (!process.env.PORTFOLIO_CHROMIUM) {
   try { await access(executablePath); }
@@ -38,7 +40,7 @@ try {
   await routes();
   for (const width of [1440,768,390,320]) {
     await page.setViewportSize({width,height:width<700?844:1000});
-    for (const route of ['/', '/work/', ...projects.map((p)=>`/work/${p.slug}/`)]) {
+    for (const route of ['/', '/work/', ...projects.map((p)=>`/work/${p.slug}/`), '/notes/', ...articleRoutes]) {
       await page.goto(origin+route, {waitUntil:'domcontentloaded'});
       await page.evaluate(async () => {
         document.querySelectorAll('img[loading="lazy"]').forEach((img) => img.loading = 'eager');
@@ -48,7 +50,7 @@ try {
       assert(dimensions.scroll <= dimensions.view + 1, `Overflow at ${width}: ${route}: ${JSON.stringify(dimensions)}`);
       assert.equal(dimensions.lang, 'zh-CN');
       assert.equal(await page.locator('h1').count(),1);
-      if (route !== '/' && route !== '/work/') {
+      if (route.startsWith('/work/') && route !== '/work/') {
         assert(await page.locator('.case-prose h2').count() >= 3, route);
         assert.equal(await page.locator('.case-toc ol a').count(),await page.locator('.case-prose h2').count());
         const image = page.locator('.case-prose [data-lightbox]').first();
@@ -64,6 +66,11 @@ try {
         await page.locator('.case-toc ol a').last().click();
         const target = await page.locator('.case-prose h2').last().boundingBox();
         assert(target && target.y >= 0 && target.y < 300, `Chapter anchor position: ${route}`);
+      }
+      if (articleRoutes.includes(route)) {
+        assert((await page.locator('.wechat-prose').innerText()).length > 100);
+        assert.equal(await page.locator('.wechat-byline a').getAttribute('target'), '_blank');
+        assert((await page.locator('.wechat-byline a').getAttribute('href')).startsWith('https://mp.weixin.qq.com/s'));
       }
       await page.evaluate(()=>scrollTo(0,0));
       await page.evaluate(async () => { await document.fonts.ready; await new Promise((resolve) => requestAnimationFrame(()=>requestAnimationFrame(resolve))); });
@@ -98,14 +105,31 @@ try {
   assert.equal(await page.locator('.reference-menu').getAttribute('aria-expanded'),'true');
   await page.locator('.reference-nav a[href="/about/"]').click();
   await page.waitForURL('**/about/');
+  // The blog is reachable by client navigation and renders imported content.
+  await page.locator('.reference-menu').click();
+  await page.locator('.reference-nav a[href="/notes/"]').click();
+  await page.waitForURL('**/notes/');
+  assert.equal(await page.locator('.wechat-article-card').count(), wechat.articles.length);
+  await page.locator('.wechat-article-card').first().click();
+  await page.waitForURL(`**${articleRoutes[0]}`);
+  await page.locator('.wechat-detail > .back-link').click();
+  await page.waitForURL('**/notes/');
   // Baseline content and original image links work without scripting.
   const baseline = await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
   const plain = await baseline.newPage();
   await plain.goto(origin+'/work/plant-ostomy/',{waitUntil:'domcontentloaded'});
   assert((await plain.locator('.case-prose').innerText()).includes('护理需求'));
   assert((await plain.locator('.case-prose a[data-lightbox]').first().getAttribute('href')).endsWith('.webp'));
+  await plain.goto(origin+articleRoutes[0],{waitUntil:'domcontentloaded'});
+  assert((await plain.locator('.wechat-prose').innerText()).length > 100);
+  const feedResponse = await fetch(origin+'/api/articles.json');
+  assert.equal(feedResponse.status, 200);
+  const feed = await feedResponse.json();
+  assert.equal(feed.articles.length, wechat.articles.length);
+  assert(!JSON.stringify(feed).includes('access_token'));
+  assert(feed.articles.every((article) => !('contentHtml' in article)));
   assert.equal(errors.length,0,errors.join('\n'));
-  await writeFile(`${output}/report.json`,JSON.stringify({passed:true,routeCount:13,results,clientNavigation:true,lightbox:true,noJavaScript:true,errors},null,2));
+  await writeFile(`${output}/report.json`,JSON.stringify({passed:true,routeCount:results.filter((result)=>result.status).length,results,clientNavigation:true,lightbox:true,wechat:true,noJavaScript:true,errors},null,2));
   console.log(`PASS: ${results.length} route/layout checks; image zoom, keyboard, anchors, client navigation, no-JS content. No local HTTP or JS errors.`);
 } finally {
   await browser.close();

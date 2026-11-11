@@ -22,6 +22,8 @@ npm run dev
 - `src/data/layout.json`：首页顺序、显隐和网格尺寸。
 - `src/data/site.json`：个人简介与站点信息。
 - `public/images/projects/`：各作品的 WebP 与 SVG 素材。
+- `src/data/wechat.json`：公众号「设计有AI」已归档文章，替换原来的示例博客。
+- `public/images/wechat/`：公众号文章的本地配图。
 - `.pages.yml`：Pages CMS 配置。
 
 本地布局编辑器仍可通过 `npm run composer` 启动，见 `docs/CONTENT-EDITOR.md`。
@@ -41,3 +43,5 @@ npm run verify:portfolio
 `dist/` 为发布内容，Composer、本地 PDF 校对图和 QA 文件不进入静态发布。当前 GitHub Actions 在 `main` 更新后自动部署。
 
 详见 `docs/PORTFOLIO-IMPORT.md`，其中记录 PDF 页与作品的对应关系、提取方法、文案处理与后续编辑方式。
+
+公众号同步见 [docs/WECHAT-SYNC.md](docs/WECHAT-SYNC.md)。本地使用 `npm run sync:wechat` 读取已发表文章；公开文章索引为 `/api/articles.json`。持续自动同步需配置公众号白名单、API 权限、凭据及固定出站 IP 的运行环境，默认关闭。

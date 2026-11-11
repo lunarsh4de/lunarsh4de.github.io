@@ -1,13 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { notes } from '../../data/site';
+import { articles, wechat, publicationDate } from '../../data/wechat';
+import '../../styles/wechat.css';
 
 export function getStaticPaths() {
-  return notes.map((note) => ({ params: { slug: note.slug }, props: { note } }));
+  return articles.map((article) => ({ params: { slug: article.slug }, props: { article } }));
 }
 
-const { note } = Astro.props;
+const { article } = Astro.props;
 ---
-<BaseLayout title={note.title} description={note.excerpt}>
-  <article class="note-detail section-pad"><a class="back-link" href="/notes/">← All notes</a><header><p class="eyebrow"><span class="eyebrow-mark"></span>{note.tag} / {note.date}</p><h1>{note.title}</h1><p class="note-detail-lede">{note.excerpt}</p></header><div class="note-detail-body"><p>This is a first-edition note slot. Long-form writing will live here as Markdown or MDX once the content workflow is connected.</p><p>The page is intentionally plain: the content should carry the argument, while images, diagrams and model viewers can be inserted as evidence where they help the reader understand a design decision.</p><blockquote>Good product stories explain what changed, why it changed, and what the designer learned from the object.</blockquote></div></article>
+<BaseLayout title={article.title} description={article.excerpt} contentLang="zh-CN" socialImage={article.cover || undefined}>
+  <article class="wechat-detail section-pad">
+    <a class="back-link" href="/notes/">← 全部文章</a>
+    <header class="wechat-detail-head"><p class="eyebrow"><span class="eyebrow-mark"></span>{wechat.accountName} / 微信公众号</p><h1>{article.title}</h1><div class="wechat-byline"><span>{article.author || wechat.accountName}</span><time datetime={article.publishedAt}>{publicationDate(article.publishedAt)}</time><a href={article.sourceUrl} target="_blank" rel="noopener noreferrer">阅读微信原文 ↗</a></div></header>
+    <div class="wechat-prose" set:html={article.contentHtml} />
+    <footer class="wechat-detail-foot"><p>本文首发于微信公众号「{wechat.accountName}」。</p><a class="arrow-link" href={article.sourceUrl} target="_blank" rel="noopener noreferrer">在微信中阅读、留言 <span aria-hidden="true">↗</span></a><a class="back-link" href="/notes/">← 返回文章列表</a></footer>
+  </article>
 </BaseLayout>

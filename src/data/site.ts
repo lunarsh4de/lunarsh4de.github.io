@@ -1,8 +1,6 @@
 import editableSite from './site.json';
 import editableLayout from './layout.json';
-import evidenceNote from './notes/why-a-product-portfolio-needs-evidence.json';
-import glbNote from './notes/preparing-a-glb-for-the-web.json';
-import cmfNote from './notes/cmf-is-a-product-strategy.json';
+import { articles } from './wechat';
 
 export type Project = {
   slug: string;
@@ -37,7 +35,7 @@ export const site = {
 
 const projectFiles = import.meta.glob<Project>('./projects/*.json', { eager: true, import: 'default' });
 export const projects: Project[] = Object.keys(projectFiles).sort().map((path) => projectFiles[path]);
-export const notes = [evidenceNote, glbNote, cmfNote];
+export const notes = articles;
 type TileLayout = { visible: boolean; columns: number; rows: number };
 const tileSource = editableLayout.homepage.projectLayout as Record<string, TileLayout>;
 export const layout = {

@@ -5,3 +5,9 @@ property-information-*.tgz
 .DS_Store
 output/qa/
 tmp/portfolio/
+tmp/wechat-*
+.env
+.env.*
+!.env.example
+src/data/wechat.json.tmp
+.playwright-cli/

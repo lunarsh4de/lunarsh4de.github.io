@@ -57,7 +57,7 @@ const isWork = Astro.url.pathname.startsWith('/work');
             <p class="reference-tagline"><span data-i18n="tagline" data-cn="产品策略，<br />人因研究与硬件开发" data-en="Product strategy,<br />human factors & hardware">Product strategy,<br />human factors &amp; hardware</span></p>
             <nav class="reference-nav" id="reference-nav" aria-label="Portfolio navigation">
               <a class:list={[(isHome || isWork) && 'is-current']} href="/?skipIntro=1#project-01" data-skip-intro>Design projects</a>
-              <a class:list={[isNotes && 'is-current']} href="/notes/">Notes</a>
+              <a class:list={[isNotes && 'is-current']} href="/notes/">Blog · 设计有AI</a>
               <a class:list={[Astro.url.pathname.startsWith('/about') && 'is-current']} href="/about/">About</a>
               <a href={`mailto:${site.email}`}>Contact</a>
             </nav>

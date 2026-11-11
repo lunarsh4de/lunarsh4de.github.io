@@ -8,11 +8,16 @@
     "build": "astro build",
     "preview": "astro preview",
     "verify:portfolio": "node scripts/verify-portfolio.mjs",
-    "composer": "node scripts/portfolio-composer.mjs"
+    "composer": "node scripts/portfolio-composer.mjs",
+    "sync:wechat": "node scripts/sync-wechat.mjs",
+    "test:wechat": "node --test scripts/wechat.test.mjs"
   },
   "dependencies": {
     "astro": "^5.15.0",
+    "parse5": "^8.1.1",
     "property-information": "^7.2.0",
+    "sanitize-html": "^2.18.1",
+    "sharp": "^0.35.5",
     "typescript": "^5.7.3"
   },
   "devDependencies": {
