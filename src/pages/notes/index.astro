@@ -1,19 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { articles, wechat, wechatSource, publicationDate } from '../../data/wechat';
+import { articles, wechat, publicationDate } from '../../data/wechat';
 import '../../styles/wechat.css';
 ---
-<BaseLayout title={`${wechat.accountName} · 博客`} description="来自公众号「设计有AI」的文章，关于 AI、工具与设计实践。" contentLang="zh-CN">
+<BaseLayout title="Blog" description="Articles on AI, design tools and everyday practice, originally published in Chinese on WeChat.">
   <section class="wechat-head section-pad">
     <p class="eyebrow"><span class="eyebrow-mark"></span>Blog / WeChat journal</p>
-    <div class="wechat-heading"><h1>设计有<span>AI</span><span class="wechat-heading-dot">.</span></h1><p>用设计理解 AI，用 AI 重新设计日常。<br />记录 AI 设计工具、灵感案例与未来生活方式。</p></div>
-    <div class="wechat-archive-meta"><span class="mono">{String(articles.length).padStart(2, '0')} 篇文章 · {wechatSource.collectionName}</span><a class="arrow-link" href={wechat.accountArticleUrl} target="_blank" rel="noopener noreferrer">前往微信公众号 <span aria-hidden="true">↗</span></a></div>
+    <div class="wechat-heading"><h1>Blog<span class="wechat-heading-dot">.</span></h1><p>AI, design tools and everyday practice.<br />Original articles in Chinese from my WeChat publication.</p></div>
+    <div class="wechat-archive-meta"><span class="mono">{String(articles.length).padStart(2, '0')} articles · Chinese</span><a class="arrow-link" href={wechat.accountArticleUrl} target="_blank" rel="noopener noreferrer">Read on WeChat <span aria-hidden="true">↗</span></a></div>
   </section>
-  <section class="wechat-archive section-pad" aria-label="公众号文章">
+  <section class="wechat-archive section-pad" aria-label="Blog articles">
     {articles.map((article, index) => <a class="wechat-article-card" href={`/notes/${article.slug}/`}>
-      <div class="wechat-card-media">{article.cover ? <img src={article.cover} alt="" loading={index === 0 ? 'eager' : 'lazy'} width="960" height="540" /> : <span class="wechat-card-wordmark" aria-hidden="true">设计有AI<span>JOURNAL / {String(index+1).padStart(2,'0')}</span></span>}</div>
-      <div class="wechat-card-copy"><p class="wechat-card-meta"><time datetime={article.publishedAt}>{publicationDate(article.publishedAt)}</time><span>微信公众号 · {wechat.accountName}</span></p><h2>{article.title}</h2><p class="wechat-card-excerpt">{article.excerpt}</p><span class="wechat-read-link">阅读全文 <span aria-hidden="true">→</span></span></div>
+      <div class="wechat-card-media">{article.cover ? <img src={article.cover} alt="" loading={index === 0 ? 'eager' : 'lazy'} width="960" height="540" /> : <span class="wechat-card-wordmark" aria-hidden="true">Design &amp; AI<span>JOURNAL / {String(index+1).padStart(2,'0')}</span></span>}</div>
+      <div class="wechat-card-copy"><p class="wechat-card-meta"><time datetime={article.publishedAt}>{publicationDate(article.publishedAt)}</time><span>WeChat · Chinese</span></p><h2 lang="zh-CN">{article.title}</h2><p class="wechat-card-excerpt" lang="zh-CN">{article.excerpt}</p><span class="wechat-read-link">Read article <span aria-hidden="true">→</span></span></div>
     </a>)}
-    {!articles.length && <p class="wechat-empty">文章整理中。你也可以先在微信公众号阅读。<a href={wechat.accountArticleUrl} target="_blank" rel="noopener noreferrer">打开公众号原文 ↗</a></p>}
+    {!articles.length && <p class="wechat-empty">Articles are being added. You can read them on WeChat.<a href={wechat.accountArticleUrl} target="_blank" rel="noopener noreferrer">Read on WeChat ↗</a></p>}
   </section>
 </BaseLayout>

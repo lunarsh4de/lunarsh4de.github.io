@@ -40,7 +40,7 @@ try {
   await routes();
   for (const width of [1440,768,390,320]) {
     await page.setViewportSize({width,height:width<700?844:1000});
-    for (const route of ['/', '/work/', ...projects.map((p)=>`/work/${p.slug}/`), '/notes/', ...articleRoutes]) {
+    for (const route of ['/', '/work/', ...projects.map((p)=>`/work/${p.slug}/`), '/about/', '/404.html', '/notes/', ...articleRoutes]) {
       await page.goto(origin+route, {waitUntil:'domcontentloaded'});
       await page.evaluate(async () => {
         document.querySelectorAll('img[loading="lazy"]').forEach((img) => img.loading = 'eager');
@@ -48,17 +48,31 @@ try {
       });
       const dimensions = await page.evaluate(() => ({view:innerWidth,scroll:document.documentElement.scrollWidth, lang:document.documentElement.lang}));
       assert(dimensions.scroll <= dimensions.view + 1, `Overflow at ${width}: ${route}: ${JSON.stringify(dimensions)}`);
-      assert.equal(dimensions.lang, 'zh-CN');
+      assert.equal(dimensions.lang, 'en');
       assert.equal(await page.locator('h1').count(),1);
+      const untranslated = await page.evaluate(() => {
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        const unexpected = [];
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          const parent = node.parentElement;
+          if (parent && !parent.closest('script,style,[lang="zh-CN"]') && /\p{Script=Han}/u.test(node.textContent || '')) unexpected.push(node.textContent.trim().slice(0,80));
+        }
+        return unexpected;
+      });
+      assert.deepEqual(untranslated, [], `Untranslated UI on ${route}`);
+      assert.equal(await page.locator('.reference-nav a[href="/work/"]').count(),1);
+      assert.equal((await page.locator('.reference-nav a[href="/notes/"]').textContent()).trim(),'Blog');
       if (route.startsWith('/work/') && route !== '/work/') {
         assert(await page.locator('.case-prose h2').count() >= 3, route);
         assert.equal(await page.locator('.case-toc ol a').count(),await page.locator('.case-prose h2').count());
         const image = page.locator('.case-prose [data-lightbox]').first();
         await image.click();
-        await page.waitForSelector('dialog[open]');
+        await page.waitForSelector('dialog[open]').catch(error => { throw new Error(`Lightbox failed at ${route}, width ${width}, current URL ${page.url()}: ${error.message}`); });
         await page.locator('dialog img').evaluate((img)=>img.decode());
         await page.locator('[data-image-zoom]').click();
         assert.equal(await page.locator('[data-image-zoom]').getAttribute('aria-pressed'),'true');
+        assert.equal(await page.locator('[data-image-zoom]').innerText(),'Fit to window');
         await page.keyboard.press('Escape');
         assert.equal(await page.locator('dialog[open]').count(),0);
         await expect(image).toBeFocused();
@@ -68,9 +82,14 @@ try {
         assert(target && target.y >= 0 && target.y < 300, `Chapter anchor position: ${route}`);
       }
       if (articleRoutes.includes(route)) {
+        assert.equal(await page.locator('.wechat-prose').getAttribute('lang'),'zh-CN');
         assert((await page.locator('.wechat-prose').innerText()).length > 100);
         assert.equal(await page.locator('.wechat-byline a').getAttribute('target'), '_blank');
         assert((await page.locator('.wechat-byline a').getAttribute('href')).startsWith('https://mp.weixin.qq.com/s'));
+      }
+      if (route === '/notes/') {
+        const covers = await page.locator('.wechat-card-media img').evaluateAll(images => images.every(img => getComputedStyle(img).objectFit === 'contain' && getComputedStyle(img).transform === 'none'));
+        assert(covers, 'Blog covers must remain uncropped');
       }
       await page.evaluate(()=>scrollTo(0,0));
       await page.evaluate(async () => { await document.fonts.ready; await new Promise((resolve) => requestAnimationFrame(()=>requestAnimationFrame(resolve))); });
@@ -118,7 +137,11 @@ try {
   const baseline = await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
   const plain = await baseline.newPage();
   await plain.goto(origin+'/work/plant-ostomy/',{waitUntil:'domcontentloaded'});
-  assert((await plain.locator('.case-prose').innerText()).includes('护理需求'));
+  assert((await plain.locator('.case-prose').innerText()).includes('Care needs are everyday needs'));
+  await expect(plain.locator('.reference-nav a[href="/notes/"]')).toBeVisible();
+  await plain.locator('.reference-nav a[href="/notes/"]').click();
+  await plain.waitForURL('**/notes/');
+  await plain.goto(origin+'/work/plant-ostomy/',{waitUntil:'domcontentloaded'});
   assert((await plain.locator('.case-prose a[data-lightbox]').first().getAttribute('href')).endsWith('.webp'));
   await plain.goto(origin+articleRoutes[0],{waitUntil:'domcontentloaded'});
   assert((await plain.locator('.wechat-prose').innerText()).length > 100);
@@ -128,6 +151,21 @@ try {
   assert.equal(feed.articles.length, wechat.articles.length);
   assert(!JSON.stringify(feed).includes('access_token'));
   assert(feed.articles.every((article) => !('contentHtml' in article)));
+  // A legacy language preference must not silently change an English interface.
+  await page.evaluate(() => localStorage.setItem('lin-language','cn'));
+  await page.goto(origin+'/about/',{waitUntil:'domcontentloaded'});
+  assert.equal(await page.locator('html').getAttribute('lang'),'en');
+  assert((await page.locator('.about-lede').innerText()).startsWith('I am Zichen Yang'));
+  assert.equal(await page.locator('[data-language-switch]').count(),0);
+  // Keyboard access to the collapsed menu and focus restoration on Escape.
+  await page.setViewportSize({width:1440,height:1000});
+  await page.locator('.sidebar-edge-toggle').focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.reference-nav a[href="/work/"]')).toBeVisible();
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.sidebar-edge-toggle')).toBeFocused();
+  assert.equal(await page.locator('.sidebar-edge-toggle').getAttribute('aria-expanded'),'false');
   assert.equal(errors.length,0,errors.join('\n'));
   await writeFile(`${output}/report.json`,JSON.stringify({passed:true,routeCount:results.filter((result)=>result.status).length,results,clientNavigation:true,lightbox:true,wechat:true,noJavaScript:true,errors},null,2));
   console.log(`PASS: ${results.length} route/layout checks; image zoom, keyboard, anchors, client navigation, no-JS content. No local HTTP or JS errors.`);

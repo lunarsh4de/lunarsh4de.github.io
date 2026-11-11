@@ -9,42 +9,48 @@ import { ClientRouter } from 'astro:transitions';
 interface Props {
   title?: string;
   description?: string;
-  contentLang?: string;
   socialImage?: string;
 }
 
-const { title = site.name, description = site.statement, contentLang, socialImage } = Astro.props;
+const { title = site.name, description = site.statement, socialImage } = Astro.props;
 const isHome = Astro.url.pathname === '/';
 const isPanel = !isHome;
 const isNotes = Astro.url.pathname.startsWith('/notes');
 const isWork = Astro.url.pathname.startsWith('/work');
 ---
 <!doctype html>
-<html lang={contentLang ?? 'en'} data-content-lang={contentLang}>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <meta property="og:title" content={`${title} — Zichen Yang`} />
     <meta property="og:description" content={description} />
     {socialImage && <meta property="og:image" content={new URL(socialImage, Astro.site)} />}
     <ClientRouter />
+    <noscript><style>
+      .reference-inner-page .reference-sidebar{position:relative!important;width:auto!important;height:auto!important}
+      .reference-home.reference-inner-page{display:block}
+      .reference-sidebar .reference-sidebar-inner{position:static!important;width:auto!important;height:auto!important;min-height:0!important;max-height:none!important;padding:24px!important;visibility:visible!important;opacity:1!important;overflow:visible!important}
+      .reference-menu,.sidebar-edge-toggle{display:none!important}
+    </style></noscript>
     <title>{title} — Product development</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
   </head>
   <body class:list={[isHome && 'is-reference-home', isPanel && 'is-panel-page']}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     {isHome ? (
       <>
         <header class="site-header">
           <a class="brand" href="/"><span class="brand-mark">Y</span><span>YANG / PRODUCT DESIGN</span></a>
           <a class="header-contact" href={`mailto:${site.email}`}>Contact <span>↗</span></a>
-          <div class="language-switch" data-language-switch aria-label="Language"><button type="button" data-language="cn">CN</button><span>/</span><button type="button" data-language="en">EN</button></div>
         </header>
-        <main><slot /></main>
+        <main id="main-content" tabindex="-1"><slot /></main>
         <footer class="site-footer"><span>© 2026 {site.name}</span><span>{site.location}</span><span class="mono">V.01 / STATIC BUILD</span></footer>
       </>
     ) : (
@@ -54,89 +60,21 @@ const isWork = Astro.url.pathname.startsWith('/work');
           <div class="reference-mobile-bar"><a class="reference-brand" href="/">{site.name}</a><button class="reference-menu" type="button" aria-expanded="false" aria-controls="reference-nav">Menu</button></div>
           <div class="reference-sidebar-inner">
             <a class="reference-brand" href="/">{site.name}</a>
-            <p class="reference-tagline"><span data-i18n="tagline" data-cn="产品策略，<br />人因研究与硬件开发" data-en="Product strategy,<br />human factors & hardware">Product strategy,<br />human factors &amp; hardware</span></p>
+            <p class="reference-tagline"><span>Product strategy,<br />human factors &amp; hardware</span></p>
             <nav class="reference-nav" id="reference-nav" aria-label="Portfolio navigation">
-              <a class:list={[(isHome || isWork) && 'is-current']} href="/?skipIntro=1#project-01" data-skip-intro>Design projects</a>
-              <a class:list={[isNotes && 'is-current']} href="/notes/">Blog</a>
-              <a class:list={[Astro.url.pathname.startsWith('/about') && 'is-current']} href="/about/">About</a>
+              <a class:list={[isWork && 'is-current']} aria-current={isWork ? 'page' : undefined} href="/work/">Design projects</a>
+              <a class:list={[isNotes && 'is-current']} aria-current={isNotes ? 'page' : undefined} href="/notes/">Blog</a>
+              <a class:list={[Astro.url.pathname.startsWith('/about') && 'is-current']} aria-current={Astro.url.pathname.startsWith('/about') ? 'page' : undefined} href="/about/">About</a>
               <a href={`mailto:${site.email}`}>Contact</a>
             </nav>
-            <div class="reference-sidebar-foot"><span class="mono">{site.location}</span><span class="mono">© 2026</span><div class="language-switch language-switch--rail" data-language-switch aria-label="Language"><button type="button" data-language="cn">CN</button><span>/</span><button type="button" data-language="en">EN</button></div></div>
+            <div class="reference-sidebar-foot"><span class="mono">{site.location}</span><span class="mono">© 2026</span></div>
           </div>
         </aside>
-        <main class="reference-content"><slot /></main>
+        <main id="main-content" class="reference-content" tabindex="-1"><slot /></main>
       </div>
     )}
-    <script is:inline>
-      (() => {
-        const initLanguage = () => {
-          const switches = document.querySelectorAll('[data-language-switch]');
-          const labels = document.querySelectorAll('[data-i18n]');
-          if (!switches.length && !labels.length) return;
-          const stored = window.localStorage.getItem('lin-language');
-          const language = stored === 'cn' ? 'cn' : 'en';
-          document.documentElement.lang = document.documentElement.dataset.contentLang || (language === 'cn' ? 'zh-CN' : 'en');
-          labels.forEach((label) => {
-            const value = label.dataset[language];
-            if (value) label.innerHTML = value;
-          });
-          switches.forEach((switcher) => {
-            switcher.querySelectorAll('[data-language]').forEach((button) => {
-              button.classList.toggle('is-active', button.dataset.language === language);
-              button.setAttribute('aria-pressed', String(button.dataset.language === language));
-              if (button.dataset.language === language || button.dataset.bound) return;
-              button.dataset.bound = 'true';
-              button.addEventListener('click', () => {
-                window.localStorage.setItem('lin-language', button.dataset.language);
-                initLanguage();
-              });
-            });
-          });
-        };
-        initLanguage();
-        document.addEventListener('astro:page-load', initLanguage);
-        document.addEventListener('astro:after-swap', initLanguage);
-      })();
-    </script>
     <script>
       import '../scripts/navigation';
-    </script>
-    <script is:inline>
-      (() => {
-        const initIntro = () => {
-          const intro = document.querySelector('[data-intro]');
-          if (!intro) return;
-          const skipFromQuery = new URLSearchParams(window.location.search).has('skipIntro');
-          const skipFromStorage = sessionStorage.getItem('lin-skip-intro') === '1';
-          if (skipFromQuery || skipFromStorage) {
-            sessionStorage.removeItem('lin-skip-intro');
-            intro.remove();
-            if (skipFromQuery) window.history.replaceState({}, '', `${window.location.pathname}${window.location.hash}`);
-            return;
-          }
-          if (intro.dataset.bound) return;
-          intro.dataset.bound = 'true';
-          const enterButton = intro.querySelector('[data-enter]');
-          let isLeaving = false;
-          const enter = () => {
-            if (isLeaving) return;
-            isLeaving = true;
-            intro.classList.add('is-hidden');
-            intro.setAttribute('aria-hidden', 'true');
-            window.setTimeout(() => intro.remove(), 850);
-          };
-          enterButton?.addEventListener('click', enter);
-          enterButton?.focus({ preventScroll: true });
-          window.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' || event.key === ' ') enter();
-          }, { once: true });
-        };
-        initIntro();
-        if (!window.__linIntroLifecycleBound) {
-          document.addEventListener('astro:page-load', initIntro);
-          window.__linIntroLifecycleBound = true;
-        }
-      })();
     </script>
   </body>
 </html>

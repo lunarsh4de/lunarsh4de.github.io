@@ -10,5 +10,5 @@ export const articles = archive.articles.map((article) => {
 }).sort((a,b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 
 export function publicationDate(value: string) {
-  return new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value)).replaceAll('/', '.');
+  return new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Shanghai', year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(value));
 }

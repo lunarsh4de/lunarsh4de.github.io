@@ -13,7 +13,7 @@ function initCaseStudy() {
   function resetZoom() {
     dialog!.classList.remove('is-zoomed');
     zoom.setAttribute('aria-pressed', 'false');
-    zoom.textContent = '原尺寸';
+    zoom.textContent = 'Actual size';
     const scroller = dialog!.querySelector('.image-dialog-scroll')!;
     scroller.scrollTop = scroller.scrollLeft = 0;
   }
@@ -25,7 +25,7 @@ function initCaseStudy() {
       opener = link;
       const source = link.querySelector('img');
       img.src = link.href;
-      img.alt = source?.alt || '作品图片';
+      img.alt = source?.alt || 'Project image';
       caption.textContent = img.alt;
       resetZoom();
       dialog.showModal();
@@ -42,7 +42,7 @@ function initCaseStudy() {
   zoom.addEventListener('click', () => {
     const expanded = dialog.classList.toggle('is-zoomed');
     zoom.setAttribute('aria-pressed', String(expanded));
-    zoom.textContent = expanded ? '适合窗口' : '原尺寸';
+    zoom.textContent = expanded ? 'Fit to window' : 'Actual size';
   }, options);
   const links = [...document.querySelectorAll<HTMLAnchorElement>('.case-toc ol a')];
   const headings = [...document.querySelectorAll<HTMLElement>('.case-prose h2')];

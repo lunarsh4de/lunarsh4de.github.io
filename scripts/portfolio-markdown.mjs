@@ -23,7 +23,7 @@ export default function portfolioMarkdown() {
               sizes: images.length > 1 ? '(max-width: 700px) calc(100vw - 36px), (max-width: 1050px) 42vw, 32vw' : '(max-width: 700px) calc(100vw - 36px), (max-width: 1050px) 84vw, 66vw',
             });
             return element('figure', { className: ['case-figure'] }, [
-              element('a', { href: record.src, className: ['case-image-link'], 'data-lightbox': '', 'aria-label': `放大查看：${img.properties.alt}`, target: '_blank', rel: 'noopener' }, [img,
+              element('a', { href: record.src, className: ['case-image-link'], 'data-lightbox': '', 'aria-label': `Enlarge image: ${img.properties.alt}`, target: '_blank', rel: 'noopener' }, [img,
                 element('span', { className: ['image-enlarge'], 'aria-hidden': 'true' }, [{type:'text',value:'↗'}]),
               ]),
               element('figcaption', {}, [{ type: 'text', value: img.properties.alt }]),

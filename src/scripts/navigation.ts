@@ -40,10 +40,10 @@ function initNavigation() {
       }, 150);
     }
   }, options);
-  sidebar.addEventListener('focusout', () => {
-    queueMicrotask(() => {
-      if (!sidebar.contains(document.activeElement) && !sidebar.matches(':hover')) setOpen(false);
-    });
+  sidebar.addEventListener('focusout', (event) => {
+    // activeElement can briefly be body during focusout. Use the destination
+    // so Tab does not close the menu before the next link receives focus.
+    if (event.relatedTarget instanceof Node && !sidebar.contains(event.relatedTarget) && !sidebar.matches(':hover')) setOpen(false);
   }, options);
   sidebar.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;

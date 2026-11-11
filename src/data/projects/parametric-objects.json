@@ -1,19 +1,30 @@
 {
   "slug": "parametric-objects",
-  "title": "参数化 · 桌面造物",
+  "title": "Parametric objects",
   "subtitle": "Parametric desktop objects",
-  "category": "参数化设计 / 3D 打印",
-  "year": "作品集 2020–2026",
-  "short": "从分枝到曲面，用参数化建模探索桌面摆件。",
-  "intro": "借助 Rhino 与 Grasshopper 生成常规建模较难构建的复杂造型，通过分枝、孔洞与连续曲面的变化，探索桌面摆件的形态与 3D 打印表达。",
+  "category": "Parametric design / 3D printing",
+  "year": "Portfolio 2020–2026",
+  "short": "Exploring desktop objects through branching forms and continuous surfaces.",
+  "intro": "Rhino and Grasshopper generate complex forms that are difficult to construct through conventional modelling. Variations in branching, openings and continuous surfaces explore desktop objects and their expression through 3D printing.",
   "color": "#efefed",
-  "hero": "基于参数化建模的 3D 打印桌面摆件造型探究",
+  "hero": "Parametric 3D-printed desktop objects",
   "image": "/images/projects/parametric-objects/hero.webp",
-  "sourcePages": [6],
+  "sourcePages": [
+    6
+  ],
   "facts": [
-    {"label": "设计工具", "value": "Rhino · Grasshopper 及相关插件"},
-    {"label": "探索方向", "value": "参数化造型 · 桌面收纳 · 曲面摆件"},
-    {"label": "呈现形式", "value": "三维模型与打印作品展示"}
+    {
+      "label": "Tools",
+      "value": "Rhino · Grasshopper and related plugins"
+    },
+    {
+      "label": "Exploration",
+      "value": "Parametric forms · Desktop storage · Sculptural surfaces"
+    },
+    {
+      "label": "Output",
+      "value": "3D models and printed objects"
+    }
   ],
   "sections": []
 }

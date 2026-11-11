@@ -19,37 +19,37 @@ const headings = allHeadings.filter((h) => h.depth === 2);
 const position = homeProjects.findIndex((item) => item.slug === project.slug);
 const next = homeProjects[(position + 1) % homeProjects.length];
 ---
-<BaseLayout title={project.title} description={project.intro} contentLang="zh-CN" socialImage={project.image}>
+<BaseLayout title={project.title} description={project.intro}  socialImage={project.image}>
   <article class={`portfolio-case portfolio-case--${project.slug}`} style={`--project-color:${project.color}`}>
     <header class="portfolio-case-head" id="project-top">
-      <div class="case-topline"><a href="/work/">← 全部作品 <span>All projects</span></a><span class="mono">{String(position + 1).padStart(2, '0')} / {String(homeProjects.length).padStart(2, '0')}</span></div>
+      <div class="case-topline"><a href="/work/">← All projects</a><span class="mono">{String(position + 1).padStart(2, '0')} / {String(homeProjects.length).padStart(2, '0')}</span></div>
       <p class="case-category">{project.category}</p>
       <h1>{project.title}</h1>
       <p class="case-subtitle">{project.subtitle}</p>
       <p class="case-intro">{project.intro}</p>
     </header>
     <figure class="case-cover">
-      <a href={project.image} data-lightbox aria-label={`放大查看：${project.hero}`} target="_blank" rel="noopener">
+      <a href={project.image} data-lightbox aria-label={`Enlarge image: ${project.hero}`} target="_blank" rel="noopener">
         <PortfolioImage src={project.image!} alt={project.hero} eager />
         <span class="image-enlarge" aria-hidden="true">↗</span>
       </a>
     </figure>
     <dl class="portfolio-facts">{project.facts.map((fact) => <div><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}</dl>
     <div class="case-reader">
-      <nav class="case-toc" aria-label="作品章节">
+      <nav class="case-toc" aria-label="Project sections">
         <p class="mono">IN THIS PROJECT</p>
         <ol>{headings.map((h, i) => <li><a href={`#${h.slug}`}><span>{String(i+1).padStart(2,'0')}</span>{h.text}</a></li>)}</ol>
-        <a class="case-top-link" href="#project-top">回到顶部 ↑</a>
+        <a class="case-top-link" href="#project-top">Back to top ↑</a>
       </nav>
-      <div class="case-prose" lang="zh-CN"><Content /></div>
+      <div class="case-prose" lang="en"><Content /></div>
     </div>
     <footer class="portfolio-next">
-      <a href="/work/" class="all-projects-link">← 全部作品</a>
+      <a href="/work/" class="all-projects-link">← All projects</a>
       <a href={`/work/${next.slug}/`} class="next-project"><span class="mono">NEXT PROJECT</span><strong>{next.title} <span>↗</span></strong><span>{next.subtitle}</span></a>
     </footer>
   </article>
   <dialog class="image-dialog" aria-labelledby="image-dialog-caption">
-    <div class="image-dialog-toolbar"><p id="image-dialog-caption"></p><div><button type="button" data-image-zoom aria-pressed="false">原尺寸</button><button type="button" data-image-close aria-label="关闭图片">关闭 ×</button></div></div>
+    <div class="image-dialog-toolbar"><p id="image-dialog-caption"></p><div><button type="button" data-image-zoom aria-pressed="false">Actual size</button><button type="button" data-image-close aria-label="Close image">Close ×</button></div></div>
     <div class="image-dialog-scroll"><img alt="" /></div>
   </dialog>
   <script>

@@ -1,60 +1,60 @@
-## 能源设备如何融入居住空间
+## Bringing energy equipment into the home
 
-家庭储能需要回应备用供电、阳台光伏协同，以及设备搬运和维护等不同需求。阳台又是有限的生活空间，设备的体量与布局会直接影响通行和操作。
+Home energy storage must address backup power, balcony solar generation, transport and maintenance. A balcony is also limited living space: equipment size and layout directly affect movement and operation.
 
-以阳台为主要使用场景，通过紧凑体量和堆叠式布局减少占地，并将清晰的状态显示与操作区域放在容易接近的位置。
+Using the balcony as the main scenario, this concept explores a compact footprint and stackable layout, with status displays and controls placed within easy reach.
 
-![阳台光伏与储能设备的场景构想](/images/projects/home-energy-storage/balcony-context.webp)
-![家庭能源协同使用的场景参考](/images/projects/home-energy-storage/home-scenario.webp)
+![Concept scenario for balcony solar and storage equipment](/images/projects/home-energy-storage/balcony-context.webp)
+![Reference scenario for coordinated home energy use](/images/projects/home-energy-storage/home-scenario.webp)
 
-## AI 辅助的形态探索
+## AI-assisted form exploration
 
-使用 SD / ComfyUI 进行多轮产品形态探索，借助 ControlNet 探索风格迁移，再结合 Hugging Face 相关工具与 Blender 建立从视觉探索到三维建模的工作流程。
+SD / ComfyUI supported several rounds of product form exploration. ControlNet was used to explore style transfer, alongside Hugging Face tools and Blender to connect visual exploration with 3D modelling.
 
-![储能设备造型与模块关系的 AI 探索图](/images/projects/home-energy-storage/ai-exploration.webp)
+![AI exploration of storage equipment forms and module relationships](/images/projects/home-energy-storage/ai-exploration.webp)
 
-![阳台设备的 AI 场景探索](/images/projects/home-energy-storage/ai-balcony.webp)
-![家庭能源系统的 AI 视觉探索](/images/projects/home-energy-storage/ai-system.webp)
-![阳台立式储能设备的 AI 形态探索](/images/projects/home-energy-storage/ai-storage.webp)
-![居住空间中的 AI 场景探索](/images/projects/home-energy-storage/ai-home.webp)
-![储能设备配置范围的 AI 探索](/images/projects/home-energy-storage/ai-range.webp)
-![设备内部布局的 AI 视觉探索](/images/projects/home-energy-storage/ai-section.webp)
-![正面显示区域的 AI 造型探索](/images/projects/home-energy-storage/ai-front.webp)
-![箱体与顶部布局的 AI 形态探索](/images/projects/home-energy-storage/ai-cabinet.webp)
-![设备系列化的 AI 形态探索](/images/projects/home-energy-storage/ai-series.webp)
+![AI exploration of a balcony installation](/images/projects/home-energy-storage/ai-balcony.webp)
+![AI visual exploration of a home energy system](/images/projects/home-energy-storage/ai-system.webp)
+![AI form exploration of upright balcony storage](/images/projects/home-energy-storage/ai-storage.webp)
+![AI exploration of a residential setting](/images/projects/home-energy-storage/ai-home.webp)
+![AI exploration of equipment configurations](/images/projects/home-energy-storage/ai-range.webp)
+![AI visual exploration of internal layout](/images/projects/home-energy-storage/ai-section.webp)
+![AI form exploration of the front display area](/images/projects/home-energy-storage/ai-front.webp)
+![AI form exploration of the enclosure and top surface](/images/projects/home-energy-storage/ai-cabinet.webp)
+![AI exploration of a product family](/images/projects/home-energy-storage/ai-series.webp)
 
-这些图像用于探索外观方向与使用场景，为后续草图和建模提供参考。
+These images explore appearance and use scenarios as references for subsequent sketches and modelling.
 
-### 产品风格参考
+### Product style references
 
-![金属材质、比例和家族化造型的产品风格参考板](/images/projects/home-energy-storage/style-references.webp)
+![Reference board for metal finishes, proportions and a shared form language](/images/projects/home-energy-storage/style-references.webp)
 
-## 从草图到体量模型
+## From sketches to volume models
 
-通过草图比较箱体比例、提手位置、模块堆叠与操作面板布局。将不同的形态方向转化为简化体量模型，逐步收敛到方正圆角、内凹顶部与可堆叠的结构语言。
+Sketches compare enclosure proportions, handle positions, module stacking and control-panel layouts. Simplified volume models narrow the direction towards rounded rectangular bodies, recessed tops and stackable forms.
 
-![储能箱体与模块组合的形态草图](/images/projects/home-energy-storage/form-sketches.webp)
-![设备形态与支撑方式的草图探索](/images/projects/home-energy-storage/system-sketches.webp)
-![堆叠布局与面板位置的草图推演](/images/projects/home-energy-storage/layout-sketches.webp)
-![系列设备的堆叠结构草图](/images/projects/home-energy-storage/stack-sketch.webp)
+![Form sketches of enclosures and module combinations](/images/projects/home-energy-storage/form-sketches.webp)
+![Sketch exploration of equipment forms and supports](/images/projects/home-energy-storage/system-sketches.webp)
+![Stacking layout and panel position studies](/images/projects/home-energy-storage/layout-sketches.webp)
+![Stacking structure sketches for the product family](/images/projects/home-energy-storage/stack-sketch.webp)
 
-![体量模型方案一](/images/projects/home-energy-storage/form-study-1.webp)
-![体量模型方案二](/images/projects/home-energy-storage/form-study-2.webp)
-![体量模型方案三](/images/projects/home-energy-storage/form-study-3.webp)
+![Volume model option one](/images/projects/home-energy-storage/form-study-1.webp)
+![Volume model option two](/images/projects/home-energy-storage/form-study-2.webp)
+![Volume model option three](/images/projects/home-energy-storage/form-study-3.webp)
 
-## 三种场景，一套产品语言
+## Three scenarios, one product language
 
-围绕家庭备用供电、阳台光伏储能与户外便携用电，形成三种设备配置：
+Three configurations address household backup power, balcony solar storage and portable outdoor use:
 
-- 堆叠扩展式储能设备：通过模块组合回应不同容量需求。
-- 阳台储能一体机：以紧凑体量整合日常操作与状态显示。
-- 户外便携储能设备：缩小体量，关注提拿和移动使用。
+- Stackable storage: module combinations explore different capacity needs.
+- Integrated balcony unit: a compact body brings together controls and status displays.
+- Portable outdoor unit: a smaller body focuses on carrying and mobile use.
 
-![堆叠式、阳台一体式与户外便携式产品的系列对比](/images/projects/home-energy-storage/family-lineup.webp)
+![Comparison of stackable, integrated balcony and portable configurations](/images/projects/home-energy-storage/family-lineup.webp)
 
-## 家族化细节与产品呈现
+## Family details and product presentation
 
-拉丝金属外壳、橙色提手、内凹顶部和方正圆角轮廓，形成统一的产品识别。不同体量、模块组合和操作面板配置，回应容量、空间和搬运需求。设备状态显示与移动端管理是后续交互规划方向。
+Brushed-metal enclosures, orange handles, recessed tops and rounded rectangular outlines create a consistent identity. Different sizes, module combinations and control panels address capacity, space and handling. Equipment status displays and mobile management remain directions for further interaction design.
 
-![智储系列产品：金属外壳、橙色提手与模块组合](/images/projects/home-energy-storage/series-poster.webp)
-![三种储能设备的家族化设计与尺寸构想](/images/projects/home-energy-storage/family-poster.webp)
+![Zhichu product family: metal enclosures, orange handles and modules](/images/projects/home-energy-storage/series-poster.webp)
+![Family design and size concepts for three storage configurations](/images/projects/home-energy-storage/family-poster.webp)

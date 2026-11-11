@@ -1,19 +1,19 @@
-## 为乡村文旅建立线上入口
+## A digital introduction to rural tourism
 
-项目围绕宁波茅洋乡的乡村振兴与青创共富农场展开，希望通过网页扩大地方旅游 IP 的影响力，让访客在线了解目的地、浏览特色项目与活动，再进入预约或住宿等服务。
+The project centres on rural revitalisation and the Youth Farm initiative in Maoyang, Ningbo. The proposed website introduces the destination, its experiences and activities, with routes towards booking and accommodation services.
 
-本作品展示网页设计 Demo 与视频制作中的界面成果。
+This case study presents interface work from a website design demo and video production.
 
-## 从地方介绍到活动浏览
+## From destination information to activities
 
-首页以目的地视觉建立第一印象，再组织农场介绍、特色活动与最新动态。访客可以沿页面逐步浏览，了解目的地提供的体验。
+The home page establishes an initial impression through destination imagery, then organises the farm introduction, featured activities and updates. Visitors can explore progressively to understand the available experiences.
 
-![青创共富农场网页首页完整界面](/images/projects/youth-farm/home-screen.webp)
+![Complete Youth Farm website home-page design](/images/projects/youth-farm/home-screen.webp)
 
-## 展开活动详情
+## Exploring activity details
 
-活动详情展示主题、介绍和相关视觉内容，让访客在浏览过程中进一步了解具体体验。
+The activity page presents a theme, introduction and related visuals to help visitors understand a particular experience.
 
-![农场研学与亲子活动的详情界面](/images/projects/youth-farm/activity-screen.webp)
+![Details page for farm learning and family activities](/images/projects/youth-farm/activity-screen.webp)
 
-地方介绍、特色项目预约与住宿服务是项目规划的服务方向；这里呈现的是界面设计作品。
+Local information, activity booking and accommodation are proposed service directions. The work shown here is an interface design concept.

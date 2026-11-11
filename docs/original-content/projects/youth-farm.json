@@ -1,0 +1,30 @@
+{
+  "slug": "youth-farm",
+  "title": "青创共富农场",
+  "subtitle": "Youth farm digital experience",
+  "category": "网页 UI / 乡村文旅",
+  "year": "作品集 2020–2026",
+  "short": "为宁波茅洋乡的农场文旅体验设计线上入口。",
+  "intro": "围绕宁波茅洋乡乡村振兴项目，将地方介绍、特色项目与活动信息组织成网页导览，探索青创共富农场旅游 IP 的数字展示与服务入口。",
+  "color": "#e9eee6",
+  "hero": "青创共富农场导览设计",
+  "image": "/images/projects/youth-farm/home-screen.webp",
+  "sourcePages": [
+    7
+  ],
+  "facts": [
+    {
+      "label": "项目场景",
+      "value": "宁波茅洋乡 · 青创共富农场"
+    },
+    {
+      "label": "作品内容",
+      "value": "网页设计 Demo · 视频制作"
+    },
+    {
+      "label": "服务构想",
+      "value": "地方导览 · 项目预约 · 住宿服务"
+    }
+  ],
+  "sections": []
+}

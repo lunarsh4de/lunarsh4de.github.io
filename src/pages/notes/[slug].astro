@@ -9,11 +9,11 @@ export function getStaticPaths() {
 
 const { article } = Astro.props;
 ---
-<BaseLayout title={article.title} description={article.excerpt} contentLang="zh-CN" socialImage={article.cover || undefined}>
+<BaseLayout title={article.title} description={article.excerpt}  socialImage={article.cover || undefined}>
   <article class="wechat-detail section-pad">
-    <a class="back-link" href="/notes/">← 全部文章</a>
-    <header class="wechat-detail-head"><p class="eyebrow"><span class="eyebrow-mark"></span>{wechat.accountName} / 微信公众号</p><h1>{article.title}</h1><div class="wechat-byline"><span>{article.author || wechat.accountName}</span><time datetime={article.publishedAt}>{publicationDate(article.publishedAt)}</time><a href={article.sourceUrl} target="_blank" rel="noopener noreferrer">阅读微信原文 ↗</a></div></header>
-    <div class="wechat-prose" set:html={article.contentHtml} />
-    <footer class="wechat-detail-foot"><p>本文首发于微信公众号「{wechat.accountName}」。</p><a class="arrow-link" href={article.sourceUrl} target="_blank" rel="noopener noreferrer">在微信中阅读、留言 <span aria-hidden="true">↗</span></a><a class="back-link" href="/notes/">← 返回文章列表</a></footer>
+    <a class="back-link" href="/notes/">← All articles</a>
+    <header class="wechat-detail-head"><p class="eyebrow"><span class="eyebrow-mark"></span>WeChat / Original article in Chinese</p><h1 lang="zh-CN">{article.title}</h1><div class="wechat-byline"><span lang="zh-CN">{article.author || wechat.accountName}</span><time datetime={article.publishedAt}>{publicationDate(article.publishedAt)}</time><a href={article.sourceUrl} target="_blank" rel="noopener noreferrer">Read on WeChat ↗</a></div></header>
+    <div class="wechat-prose" lang="zh-CN" set:html={article.contentHtml} />
+    <footer class="wechat-detail-foot"><p>Originally published on WeChat: <span lang="zh-CN">{wechat.accountName}</span>.</p><a class="arrow-link" href={article.sourceUrl} target="_blank" rel="noopener noreferrer">Read and comment on WeChat <span aria-hidden="true">↗</span></a><a class="back-link" href="/notes/">← All articles</a></footer>
   </article>
 </BaseLayout>

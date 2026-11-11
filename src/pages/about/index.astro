@@ -3,15 +3,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../data/site';
 ---
 
-<BaseLayout title={`About — ${site.name}`} description={site.statement}>
+<BaseLayout title="About" description={site.statement}>
   <article class="about-page">
-    <h1 class="sr-only" data-i18n="about-title" data-cn="关于我" data-en="About me">About me</h1>
+    <h1 class="sr-only">About me</h1>
 
     <div class="about-grid">
       <div class="about-copy">
-        <p class="about-lede" data-i18n="about-body" data-cn={site.profile.body.cn} data-en={site.profile.body.en}>{site.profile.body.en}</p>
-        <p data-i18n="about-focus" data-cn={site.profile.focus.cn} data-en={site.profile.focus.en}>{site.profile.focus.en}</p>
-        <p data-i18n="about-principle" data-cn={site.profile.principle.cn} data-en={site.profile.principle.en}>{site.profile.principle.en}</p>
+        <p class="about-lede">{site.profile.body.en}</p>
+        <p>{site.profile.focus.en}</p>
+        <p>{site.profile.principle.en}</p>
         <a class="arrow-link" href={`mailto:${site.email}`}>Start a conversation <span>↗</span></a>
       </div>
       <figure class="about-portrait">

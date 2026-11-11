@@ -1,4 +1,6 @@
 .intro-top,.intro-bottom{align-items:center}
+.skip-link{position:fixed;top:12px;left:64px;z-index:100;padding:10px 16px;background:#fff;color:#171817;transform:translateY(-200%)}
+.skip-link:focus{transform:translateY(0)}
 .site-header{background:var(--surface-page)}
 
 /* Map the existing page aliases to the local semantic token layer. */
