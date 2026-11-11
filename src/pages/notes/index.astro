@@ -11,7 +11,7 @@ import '../../styles/wechat.css';
   </section>
   <section class="wechat-archive section-pad" aria-label="公众号文章">
     {articles.map((article, index) => <a class="wechat-article-card" href={`/notes/${article.slug}/`}>
-      <div class="wechat-card-media">{article.cover ? <img src={article.cover} alt="" loading={index === 0 ? 'eager' : 'lazy'} width="960" height="540" /> : <span class="wechat-card-wordmark" aria-hidden="true">设计有AI<span>JOURNAL / {String(index+1).padStart(2,'0')}</span></span>}<span class="wechat-card-arrow" aria-hidden="true">↗</span></div>
+      <div class="wechat-card-media">{article.cover ? <img src={article.cover} alt="" loading={index === 0 ? 'eager' : 'lazy'} width="960" height="540" /> : <span class="wechat-card-wordmark" aria-hidden="true">设计有AI<span>JOURNAL / {String(index+1).padStart(2,'0')}</span></span>}</div>
       <div class="wechat-card-copy"><p class="wechat-card-meta"><time datetime={article.publishedAt}>{publicationDate(article.publishedAt)}</time><span>微信公众号 · {wechat.accountName}</span></p><h2>{article.title}</h2><p class="wechat-card-excerpt">{article.excerpt}</p><span class="wechat-read-link">阅读全文 <span aria-hidden="true">→</span></span></div>
     </a>)}
     {!articles.length && <p class="wechat-empty">文章整理中。你也可以先在微信公众号阅读。<a href={wechat.accountArticleUrl} target="_blank" rel="noopener noreferrer">打开公众号原文 ↗</a></p>}

@@ -9,9 +9,8 @@
 .wechat-archive{padding-bottom:100px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:52px 32px}
 .wechat-article-card{display:flex;flex-direction:column;min-width:0}
 .wechat-card-media{position:relative;aspect-ratio:16/9;background:#ecede6;overflow:hidden}
-.wechat-card-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease-standard)}
-.wechat-article-card:hover .wechat-card-media img{transform:scale(1.025)}
-.wechat-card-arrow{position:absolute;bottom:16px;right:16px;width:36px;height:36px;display:grid;place-items:center;background:white;border-radius:50%;font-size:20px}
+.wechat-card-media img{display:block;width:100%;height:100%;object-fit:contain}
+.wechat-article-card:is(:hover,:focus-visible) h2{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
 .wechat-card-wordmark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:clamp(26px,4vw,48px);letter-spacing:-.04em}
 .wechat-card-wordmark>span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;margin-top:14px;color:var(--muted)}
 .wechat-card-copy{padding-top:20px}
