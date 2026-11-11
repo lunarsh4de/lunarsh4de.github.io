@@ -1,0 +1,19 @@
+/* Small native cursors, inspired by the reference's black / blue states.
+   Original vector assets; the OS handles movement without a following overlay. */
+@media (hover: hover) and (pointer: fine) and (forced-colors: none) {
+  html, body {
+    cursor: url('/cursors/dot.svg') 6 6, auto;
+  }
+
+  a[href], button, summary, [role='button'],
+  input:is([type='button'], [type='submit'], [type='reset'], [type='checkbox'], [type='radio']),
+  select, .reference-menu, .sidebar-edge-toggle, .language-switch button, .image-dialog button {
+    cursor: url('/cursors/link.svg') 7 7, pointer;
+  }
+
+  a[data-lightbox] { cursor: zoom-in; }
+  input:not([type='button'], [type='submit'], [type='reset'], [type='checkbox'], [type='radio'], [type='range'], [type='color'], [type='file']),
+  textarea, [contenteditable='true'] { cursor: text; }
+  :is(button, input, select, textarea):disabled,
+  [aria-disabled='true']:is(a, button, [role='button']) { cursor: not-allowed; }
+}

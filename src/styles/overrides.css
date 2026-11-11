@@ -107,16 +107,15 @@
 .showcase-project.is-active::before{content:'';position:absolute}
 .showcase-project .mono{color:var(--muted)}
 
-/* The reference cursor is a physical-looking ball, not a tiny pointer dot. */
-.cursor-dot{width:22px;height:22px;margin:-11px 0 0 -11px;background:radial-gradient(circle at 35% 30%,#fff 0 8%,#cdd4c9 20%,#171817 75%);mix-blend-mode:difference;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:width .22s var(--ease-standard),height .22s var(--ease-standard),margin .22s var(--ease-standard),transform .08s linear}
-.cursor-hover .cursor-dot{width:38px;height:38px;margin:-19px 0 0 -19px}
+
+
 
 /* Black-to-clear page entry wipe, inspired by editorial portfolio transitions. */
 .intro-screen{opacity:1;visibility:visible;transform:translateX(0);transition:transform .8s cubic-bezier(.77,0,.18,1),visibility 0s linear .8s}
 .intro-screen.is-hidden{opacity:1;visibility:hidden;transform:translateX(100%)}
 
 @media (max-width:1100px){.homepage-showcase{grid-template-columns:210px minmax(0,1fr)}.showcase-product{right:0;}.showcase-project-list{grid-template-columns:1fr}}
-@media (max-width:700px){.homepage-showcase{display:block}.showcase-content{min-height:calc(100dvh - 62px);padding:24px 18px 30px}.showcase-head{padding-bottom:15px}.showcase-head span{display:none}.showcase-stage{min-height:600px}.showcase-stage-copy{left:22px;right:22px;bottom:62px}.showcase-stage-copy h1{font-size:clamp(54px,16vw,90px)}.showcase-product{right:0;top:42%;width:43vw;height:58vw;min-width:150px;min-height:215px}.showcase-product-body{inset:7% 0 11% 9%;border-right:0;border-radius:28px 0 0 31px}.showcase-stage-foot{left:22px;right:22px;bottom:20px}.showcase-stage-foot span:last-child{display:none}.showcase-project-list{grid-template-columns:1fr;margin-top:11px}.showcase-project+.showcase-project{padding-left:0;border-left:0}.showcase-project{grid-template-columns:35px minmax(0,1fr) 20px;padding:14px 0}.showcase-project-category{grid-column:2}.cursor-dot{display:none}}
+@media (max-width:700px){.homepage-showcase{display:block}.showcase-content{min-height:calc(100dvh - 62px);padding:24px 18px 30px}.showcase-head{padding-bottom:15px}.showcase-head span{display:none}.showcase-stage{min-height:600px}.showcase-stage-copy{left:22px;right:22px;bottom:62px}.showcase-stage-copy h1{font-size:clamp(54px,16vw,90px)}.showcase-product{right:0;top:42%;width:43vw;height:58vw;min-width:150px;min-height:215px}.showcase-product-body{inset:7% 0 11% 9%;border-right:0;border-radius:28px 0 0 31px}.showcase-stage-foot{left:22px;right:22px;bottom:20px}.showcase-stage-foot span:last-child{display:none}.showcase-project-list{grid-template-columns:1fr;margin-top:11px}.showcase-project+.showcase-project{padding-left:0;border-left:0}.showcase-project{grid-template-columns:35px minmax(0,1fr) 20px;padding:14px 0}.showcase-project-category{grid-column:2}}
 
 /* Full-bleed product feed: each project is a visual panel, not a text card. */
 .product-feed{padding:0;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(150px,18vw);gap:clamp(10px,1.2vw,18px);align-items:stretch;}

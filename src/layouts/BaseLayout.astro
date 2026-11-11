@@ -2,6 +2,7 @@
 import '../styles/tokens.css';
 import '../styles/global.css';
 import '../styles/overrides.css';
+import '../styles/cursor.css';
 import { site } from '../data/site';
 import { ClientRouter } from 'astro:transitions';
 
@@ -36,7 +37,6 @@ const isWork = Astro.url.pathname.startsWith('/work');
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
   </head>
   <body class:list={[isHome && 'is-reference-home', isPanel && 'is-panel-page']}>
-    <div class="cursor-dot" aria-hidden="true"></div>
     {isHome ? (
       <>
         <header class="site-header">
@@ -96,42 +96,6 @@ const isWork = Astro.url.pathname.startsWith('/work');
         initLanguage();
         document.addEventListener('astro:page-load', initLanguage);
         document.addEventListener('astro:after-swap', initLanguage);
-      })();
-    </script>
-    <script is:inline>
-      (() => {
-        const initCursor = () => {
-          const finePointer = window.matchMedia('(pointer: fine)');
-          if (!finePointer.matches) return;
-          if (!window.__linCursorStarted) {
-            let pointerX = window.innerWidth / 2;
-            let pointerY = window.innerHeight / 2;
-            let dotX = pointerX;
-            let dotY = pointerY;
-            const move = (event) => {
-              pointerX = event.clientX;
-              pointerY = event.clientY;
-            };
-            const render = () => {
-              dotX += (pointerX - dotX) * 0.18;
-              dotY += (pointerY - dotY) * 0.18;
-              const currentDot = document.querySelector('.cursor-dot');
-              if (currentDot) currentDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
-              requestAnimationFrame(render);
-            };
-            window.addEventListener('pointermove', move, { passive: true });
-            render();
-            window.__linCursorStarted = true;
-          }
-          document.querySelectorAll('a, button, model-viewer').forEach((element) => {
-            if (element.dataset.cursorBound) return;
-            element.dataset.cursorBound = 'true';
-            element.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-            element.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-          });
-        };
-        initCursor();
-        document.addEventListener('astro:page-load', initCursor);
       })();
     </script>
     <script>

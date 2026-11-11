@@ -14,6 +14,7 @@ test('untrusted HTML is stripped while article formatting and lazy images surviv
   assert.match(safe, /noopener noreferrer/);
   assert.doesNotMatch(safe, /script|iframe|onclick|onerror|style=|evil\.test|data:bad/);
   assert.equal(articleUrl('https://mp.weixin.qq.com/s/abc?scene=1&click_id=2'), 'https://mp.weixin.qq.com/s/abc');
+  assert.equal(articleUrl('http://mp.weixin.qq.com/s/abc?scene=1'), 'https://mp.weixin.qq.com/s/abc');
   assert.throws(() => articleUrl('https://mp.weixin.qq.com.evil.test/s/abc'));
 });
 

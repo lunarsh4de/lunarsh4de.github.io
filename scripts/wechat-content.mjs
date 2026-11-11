@@ -3,7 +3,9 @@ import { createHash } from 'node:crypto';
 
 export function articleUrl(value) {
   const url = new URL(value);
-  if (url.protocol !== 'https:' || url.hostname !== 'mp.weixin.qq.com' || url.username || url.password || url.port) throw new Error('Article source must be an HTTPS mp.weixin.qq.com URL.');
+  if (!['http:', 'https:'].includes(url.protocol) || url.hostname !== 'mp.weixin.qq.com' || url.username || url.password || url.port) throw new Error('Article source must be an HTTP(S) mp.weixin.qq.com URL.');
+  // WeChat may return legacy HTTP links; always publish their HTTPS equivalent.
+  url.protocol = 'https:';
   if (!/^\/s(?:\/|$)/.test(url.pathname)) throw new Error('Expected a WeChat article link.');
   for (const key of [...url.searchParams.keys()]) if (!['__biz', 'mid', 'idx', 'sn'].includes(key)) url.searchParams.delete(key);
   url.searchParams.sort();
