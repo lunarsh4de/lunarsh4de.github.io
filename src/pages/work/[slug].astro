@@ -2,12 +2,12 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PortfolioImage from '../../components/PortfolioImage.astro';
-import { projects, homeProjects } from '../../data/site';
+import { homeProjects } from '../../data/site';
 import '../../styles/portfolio.css';
 
 export async function getStaticPaths() {
   const stories = await getCollection('projects');
-  return projects.map((project) => {
+  return homeProjects.map((project) => {
     const story = stories.find((entry) => entry.id === project.slug);
     if (!story) throw new Error(`Missing case study: ${project.slug}`);
     return { params: { slug: project.slug }, props: { project, story } };

@@ -5,7 +5,9 @@ import assert from 'node:assert/strict';
 const origin = process.env.PORTFOLIO_PREVIEW_URL || 'http://127.0.0.1:4331';
 const output = 'output/qa/portfolio';
 await mkdir(output, {recursive:true});
-const projects = await Promise.all((await readdir('src/data/projects')).map(async (file) => JSON.parse(await readFile(`src/data/projects/${file}`, 'utf8'))));
+const layout = JSON.parse(await readFile('src/data/layout.json', 'utf8'));
+const projects = (await Promise.all((await readdir('src/data/projects')).map(async (file) => JSON.parse(await readFile(`src/data/projects/${file}`, 'utf8')))))
+  .filter((project) => layout.homepage.projectLayout[project.slug]?.visible !== false);
 const wechat = JSON.parse(await readFile('src/data/wechat.json', 'utf8'));
 const articleRoutes = wechat.articles.map((article) => `/notes/${article.slug}/`);
 let executablePath = process.env.PORTFOLIO_CHROMIUM || chromium.executablePath();

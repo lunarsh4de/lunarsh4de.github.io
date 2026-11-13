@@ -17,20 +17,20 @@
       "plant-ostomy": {
         "visible": true,
         "columns": 1,
-        "rows": 1
+        "rows": 2
       },
       "home-energy-storage": {
-        "visible": true,
+        "visible": false,
         "columns": 1,
         "rows": 1
       },
       "parametric-objects": {
-        "visible": true,
+        "visible": false,
         "columns": 1,
         "rows": 2
       },
       "youth-farm": {
-        "visible": true,
+        "visible": false,
         "columns": 2,
         "rows": 2
       }
